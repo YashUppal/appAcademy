@@ -71,5 +71,26 @@ p hash_accept(:name,{:name => "John", :age => 23}) # John
 p hash_accept(:name,:name => "John", :age => 23) # John
 
 ```
-    
+## Inject / Reduce
+
+Used to iterate over array, using an accumulator. Pass a block into inject and accumulator equals the result of block.
+
+```
+arr = [1,2,3,4,5]
+
+arr.inject { |acc, el| acc + el } # 15
+
+```
+We can pass some initial value to the accumulator. Find sum of all even numbers in array using Inject
+
+```
+arr = [1,2,3,4,5]
+
+arr.inject(0) { |acc, el| 
+   if el.even?
+      acc = el
+   else
+      acc
+   end
+} #  => 6
 
