@@ -3,7 +3,21 @@
 # For example "aaabbc" is compressed to "3a2bc".
 
 def compress_str(str)
-
+  compressed = ""
+  count = 1
+  (0..str.length-1).each do |idx|
+    if str[idx] == str[idx+1]
+      count += 1
+    else
+      if count == 1
+        compressed += str[idx]
+      else
+        compressed += count.to_s + str[idx]
+        count = 1
+      end
+    end
+  end
+  return compressed
 end
 
 p compress_str("aaabbc")        # => "3a2bc"
