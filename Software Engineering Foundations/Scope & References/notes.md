@@ -116,7 +116,9 @@ p grid # [["X", nil, nil], ["X", nil, nil], ["X", nil, nil]]
 * To overcome this,
 
 ```
-grid = Array.new(3) { Array.new(3) }
+# passing in a block results in a new subarray being created
+
+grid = Array.new(3) { Array.new(3) } 
 
 p grid # [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
 
@@ -124,7 +126,7 @@ grid[0][0] = "X"
 
 p grid # [["X", nil, nil], [nil, nil, nil], [nil, nil, nil]]
 ```
-* Since passing the block results in a new array getting created, the above code works as intended.
+* Since passing the block results in a new (sub)array getting created, the above code works as intended.
 
 * Variation
 ```
@@ -145,4 +147,30 @@ p grid # [["X", nil, nil], [nil, nil, nil], [nil, nil, nil]]
 # Very cool
 
 ```
+
+## Intro to Testing Notes
+
+### What is TDD?
+
+* TDD stands for test-driven development. Software Development driven by the intention of passing test cases.
+
+    1) Write test cases
+    2) Check for test failure
+    3) Write code to pass the test
+    4) Repeat if more test coverage is needed
+
+* Tests sets up an expectation of some behaviour from your code and and checks that your code meets the expectation.
+
+## Rspec Notes
+
+### What is Rspec?
+
+* Rspec is a testing library, using tu test ruby code. 'spec' is another name for a test. 
+
+* Basic Rspec keywords:
+    
+    1) **describe** : names the method being tested
+    2) **context** : describe the scenario
+    3) **it** : expresses the expected behavior of code being tested
+    4) **expect** : show how the behaviour is tested
 
