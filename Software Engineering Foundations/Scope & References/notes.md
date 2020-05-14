@@ -247,3 +247,5 @@ rescue
 end
 
 ```
+
+```begin...rescue``` **is how we handle any exception, ```raise``` is how we create an exception**
