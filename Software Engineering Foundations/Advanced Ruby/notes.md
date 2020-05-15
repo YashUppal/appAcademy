@@ -71,6 +71,48 @@ p hash_accept(:name,{:name => "John", :age => 23}) # John
 p hash_accept(:name,:name => "John", :age => 23) # John
 
 ```
+## Splat Operator
+
+Used to bundle together some values.
+
+In the code snippet below, we try to pass more arguments than the method expects.
+
+```ruby
+def some_method(arg)
+   p arg
+end  
+
+some_method(1,2,3,4)
+ArgumentError: wrong number of arguments (given 4, expected 1)
+from (pry):10:in `some_method'
+```
+
+To get around this, we can use the splat operator in the parameter, so that it can handle multiple arguments
+
+```ruby
+def some_method(*arg)
+  p arg
+end  
+
+some_method(1,2,3,4)
+[1, 2, 3, 4]
+=> [1, 2, 3, 4]
+```
+
+Splat operator is very versatile.
+
+```ruby
+def some_method(first_arg,*extras)
+ puts "first arg: "+first_arg
+ p "extras: " + extras.to_s
+end
+
+some_method("John",1,2,3,4)
+first arg: John
+"extras: [1, 2, 3, 4]"
+```
+
+
 ## Inject / Reduce
 
 Used to iterate over array, using an accumulator. Pass a block into inject and accumulator equals the result of block.
@@ -88,7 +130,7 @@ arr = [1,2,3,4,5]
 
 arr.inject(0) { |acc, el| 
    if el.even?
-      acc = el
+      acc += el
    else
       acc
    end
