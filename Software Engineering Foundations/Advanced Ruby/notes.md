@@ -130,7 +130,7 @@ arr = [1,2,3,4,5]
 
 arr.inject(0) { |acc, el| 
    if el.even?
-      acc = el
+      acc += el
    else
       acc
    end
