@@ -26,3 +26,32 @@ def merge(hash1, hash2)
 end
 
 
+def censor(sent,curse)
+  sent.split.map do |word|
+    if curse.include?(word.downcase)
+      vowel_replace(word)
+    else
+      word
+    end
+  end.join(" ")
+end
+
+def vowel_replace(curse_word)
+  vowels = "aeiouAEIOU"
+  curse_word.each_char.with_index do |char, idx|
+    if vowels.include?(char)
+      curse_word[idx] = "*"
+    end
+  end
+  curse_word
+end
+
+def power_of_two?(num)
+  powers = []
+  i = 1
+  while i <= num
+    powers << i
+    i = i * 2
+  end
+  powers.include?(num)
+end
