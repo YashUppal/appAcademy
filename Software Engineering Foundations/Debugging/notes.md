@@ -77,3 +77,33 @@ rb_str_reverse(VALUE str)
     .
 }
 ```
+## Byebug Notes
+
+### What is Byebug?
+
+Byebug is a ruby debugging tool. Can be used to pause the execution of the code and track variables, along with more utilities.
+
+```gem install byebug```
+
+
+### Byebug keywords
+
+```debugger```: put in your code when you want to enter debug mode
+
+```next```: move to next line of code in normal flow of execution
+
+```continue```: continue the program until another breakpoint is encountered.
+
+```step```: step into a method call
+
+```display```: track values and variables
+
+## Common Error Types Notes
+
+1) ```SyntaxError```: Mistake made syntactically
+2) ```TypeError```: Incorrectly handling data types, eg - adding a number and a nil
+3) ```ArgumentError```: Passing more or less than expected arguments to a method
+4) ```NameError```: Referencing a variable that doesn't exist
+5) ```NoMethodError```: Referencing a method that doesn't exist
+
+**To fix an error: Focus on the error type and the line number.**
