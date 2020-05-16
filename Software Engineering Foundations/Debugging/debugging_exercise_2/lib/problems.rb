@@ -45,23 +45,24 @@ def dupe_indices(arr)
     dupe_hash[ele] << idx
   end
   
+  # Alternative (better?) way to create hashes with Arrays as default values.
+
+  # hash = Hash.new { |key, value| hash[key] = value }
+
   only_dupes = {}
 
   dupe_hash.each do |key, value|
     only_dupes[key] = value if value.length > 1
   end
   
+  # can also be done using Hash#select
+
   return only_dupes
 
 end
 
-
+# returns true if two arrays are same, albeit in different order. false otherwise
 def ana_array(arr_1, arr_2)
-  # (arr_1 + arr_2).uniq.each do |ele|
-  #   # return false if !(arr_1.include?(ele)) || !(arr_2.include?(ele))
-  #   return false if !(arr_1.include?(ele) && (arr_2.include?(ele))) # return false, if either array has uncommon element.
-  # end
-  # true
 
   hash_1 = Hash.new(0)
   hash_2 = Hash.new(0)
