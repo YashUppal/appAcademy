@@ -306,3 +306,72 @@ car = Car.new("red")
 Car.upgrade
 ```
 **Class constants are shared among all the instances of the class and cannot be re-assigned**
+
+## Creating a Hash with a default value as an array.
+
+* By default, hashes have ```nil``` as the default value. If we want to have a hash with a default value other than nil, we can pass that value to the ```Hash#new``` method
+
+```ruby
+grades = {}
+grades[:john] = 10
+
+p grades # {:john => 10}
+p grades[:john] # 10
+p grades[:jane] # nil
+
+grades_default = Hash.new(0) # Pass '0' as default value
+
+p grades_default # {}
+
+grades_default[:john] = 10
+
+p grades_default # {:john => 10}
+
+p grades_default[:john] # 10
+p grades_default[:jane] # 0
+```
+
+* In order to have a hash, where default value is an empty array, we attempt something like
+
+```ruby
+grades = Hash.new([])
+```
+
+* But the above code results in a bug.
+
+```ruby
+grades = Hash.new([])
+
+grades[:john] # []
+
+grades[:john] << 75
+grades[:john] << 80
+grades[:john] << 85
+
+p grades[:john] # [75,80,85]
+
+# ??? ¯\_(ツ)_/¯
+grades[:jane] # [75,80,85]
+# should be []
+
+# grades = Hash.new([]) causes every key to refer to that single array. Hence, the above code is bugged.
+```
+
+* To overcome this issue, we can pass a block to ```Hash.new``` that will create a new array each time, as a default value
+
+```ruby
+# block takes a variable 'hash' that referes to the hash itself, and a variable 'key' that refers to the key. Upon referencing the corresponding key in the hash, a new array is created (for each distinct key)
+grades_improved = Hash.new {|hash, key| hash[key] = Array.new }
+
+p grades_improved[:john] # []
+
+grades_improved[:john] << 75
+grades_improved[:john] << 80
+grades_improved[:john] << 90
+
+p grades_improved[:john] # [75,80,90]
+
+p grades_improved[:jane] # []
+
+# Nice
+```
