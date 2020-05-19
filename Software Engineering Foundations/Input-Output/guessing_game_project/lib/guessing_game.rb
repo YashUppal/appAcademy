@@ -30,7 +30,4 @@ class GuessingGame
     input_num = gets.chomp.to_i # remove \n from input, and convert to int
     self.check_num(input_num)
   end
-
-
-
 end
