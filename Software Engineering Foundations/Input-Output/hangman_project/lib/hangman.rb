@@ -7,7 +7,7 @@ class Hangman
 
   def initialize
     @secret_word = Hangman::random_word
-    @guess_word = Array.new(@secret_word.length) { |ele| "_" }
+    @guess_word = Array.new(@secret_word.length) { |ele| "_" } # => @guess_word = Array.new(@secret_word.length, "_")
     @attempted_chars = Array.new
     @remaining_incorrect_guesses = 5
   end
