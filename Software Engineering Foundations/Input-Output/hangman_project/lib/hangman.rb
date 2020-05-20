@@ -7,7 +7,7 @@ class Hangman
 
   def initialize
     @secret_word = Hangman::random_word
-    @guess_word = Array.new(@secret_word.length) { |ele| "_"}
+    @guess_word = Array.new(@secret_word.length) { |ele| "_" }
     @attempted_chars = Array.new
     @remaining_incorrect_guesses = 5
   end
@@ -46,4 +46,53 @@ class Hangman
 
   # PART 2
 
+  def try_guess(char)
+    if already_attempted?(char)
+      puts 'that has already been attempted'
+      return false
+    else
+      @attempted_chars << char
+      if get_matching_indices(char).empty?
+        @remaining_incorrect_guesses -= 1
+      else
+        fill_indices(char, get_matching_indices(char))
+      end
+      return true
+    end
+  end
+
+  def ask_user_for_guess
+    print "Enter a char: "
+    input = gets.chomp
+    try_guess(input)
+  end
+
+  def win?
+    if @secret_word == @guess_word.join("")
+      puts "WIN"
+      return true
+    else
+      return false
+    end
+  end 
+
+  def lose?
+    if remaining_incorrect_guesses == 0
+      puts 'LOSE'
+      return true
+    else
+      false
+    end
+  end
+
+  def game_over?
+    if win?
+      puts @secret_word
+      return true
+    elsif lose?
+      puts @secret_word
+      return true
+    end
+    false
+  end
 end
