@@ -42,4 +42,30 @@ class Code
   def length
     pegs.length
   end
+
+  # Part 2
+
+  def num_exact_matches(guess)
+    count = 0
+    guess.pegs.each_with_index do |ele, idx|
+      if self.pegs[idx] == ele
+        count += 1
+      end
+    end
+    return count
+  end
+
+  def num_near_matches(guess)
+    count = 0
+    guess.pegs.each_with_index do |ele, idx|
+      if ele != self.pegs[idx] && self.pegs.include?(ele)
+        count+= 1
+      end
+    end
+    count
+  end
+
+  def ==(other_code)
+    self.pegs == other_code.pegs
+  end 
 end
