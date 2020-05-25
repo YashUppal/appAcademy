@@ -10,6 +10,8 @@ class Board
 
   def [](position)
     @grid[position.first][position.last]
+    # alternate syntax
+    # row, col = position
   end
 
   def []=(position, value)
@@ -74,6 +76,4 @@ class Board
   def print
     Board.print_grid(self.hidden_ships_grid)
   end
-
-
 end
