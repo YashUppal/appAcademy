@@ -74,6 +74,7 @@ end
 def reverse_string(str)
   return "" if str == ""
   return str if str.length == 1
+
   splitted = str.split("")
   first = splitted.shift
   reverse_string(splitted.join("")) + first # putting first car at end
