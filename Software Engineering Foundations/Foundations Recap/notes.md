@@ -53,6 +53,8 @@ true || 42 # true
 false || 0 # 0
 nil || "something" # "something"
 nil || false # false
+
+# Note || does not return 'true' or 'false' in above scenarios. it returns actual values.
 ```
 
 ## Default arguments
