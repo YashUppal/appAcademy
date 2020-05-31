@@ -179,7 +179,6 @@ def vowel_rotate(str)
   return rotated
 end
 
-
 # Proc Problems
 
 # String#select
