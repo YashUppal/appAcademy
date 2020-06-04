@@ -47,7 +47,6 @@ def pair_product(nums, product)
   return false
 end
 
-
 # Write a method rampant_repeats that accepts a string and a hash as arguments. The method should return a new string where characters of the original string are repeated the number of times specified by the hash. If a character does not exist as a key of the hash, then it should remain unchanged.
 
 # Examples
@@ -162,6 +161,7 @@ def matrix_addition(matrix1, matrix2)
   sum_matrix
 end
 
+
 # Write a method mutual_factors that accepts any amount of numbers as arguments. The method should return an array containing all of the common divisors shared among the arguments. For example, the common divisors of 50 and 30 are 1, 2, 5, 10. You can assume that all of the arguments are positive integers.
 
 # Examples
@@ -227,6 +227,7 @@ def tribonacci_number(n)
   tribonacci_number(n-1) + tribonacci_number(n-2) + tribonacci_number(n-3)
 end
 
+
 # Write a method matrix_addition_reloaded that accepts any number of matrices as arguments. The method should return a new matrix representing the sum of the arguments. Matrix addition can only be performed on matrices of similar dimensions, so if all of the given matrices do not have the same "height" and "width", then return nil.
 
 # Examples
@@ -272,6 +273,7 @@ def matrix_addition_reloaded(*matrices)
   end
 end
 
+
 # Write a method squarocol? that accepts a 2-dimensional array as an argument. The method should return a boolean indicating whether or not any row or column is completely filled with the same element. You may assume that the 2-dimensional array has "square" dimensions, meaning it's height is the same as it's width.
 
 # Examples
@@ -310,7 +312,6 @@ end
 
 def squarocol?(array)
   outer_iterator = 0
-  # is_sqarocol? = false
   while outer_iterator < array.length
     first_ele = array[outer_iterator].first
     return true if array[outer_iterator].all? { |ele| ele == first_ele }
@@ -339,6 +340,7 @@ def squarocol?(array)
 
   false
 end
+
 
 # Write a method squaragonal? that accepts 2-dimensional array as an argument. The method should return a boolean indicating whether or not the array contains all of the same element across either of its diagonals. You may assume that the 2-dimensional array has "square" dimensions, meaning it's height is the same as it's width.
 
@@ -396,6 +398,7 @@ def squaragonal?(matrix)
   diagonal.all? {|ele| ele == first_ele} || antidiagonal.all? { |ele| ele == first_anti_ele}
 end
 
+
 # Pascal's triangle is a 2-dimensional array with the shape of a pyramid. The top of the pyramid is the number 1. To generate further levels of the pyramid, every element is the sum of the element above and to the left with the element above and to the right. Nonexisting elements are treated as 0 when calculating the sum. For example, here are the first 5 levels of Pascal's triangle:
 
 #       1
@@ -447,4 +450,200 @@ def pascals_triangle(n)
       triangle << next_level
   end
   triangle
+end
+
+
+# A "Mersenne prime" is a prime number that is one less than a power of 2. This means that it is a prime number with the form 2^x - 1, where x is some exponent. For example:
+
+# 3 is a Mersenne prime because it is prime and 3 = 2^2 - 1
+# 7 is a Mersenne prime because it is prime and 7 = 2^3 - 1
+# 11 is not a Mersenne prime because although it is prime, it does not have the form 2^x - 1
+# The first three Mersenne primes are 3, 7, and 31. Write a method mersenne_prime that accepts a number, n, as an argument and returns the n-th Mersenne prime.
+
+# Examples
+
+# p mersenne_prime(1) # 3
+# p mersenne_prime(2) # 7
+# p mersenne_prime(3) # 31
+# p mersenne_prime(4) # 127
+# p mersenne_prime(6) # 131071
+
+def mersenne_prime(n)
+  mersennes = []
+  num = 2
+  while mersennes.length < n
+    mersennes << num-1 if is_mersenne?(num)
+    num = num * 2
+  end
+  mersennes.last
+end
+
+def is_mersenne?(num)
+  # accepts a number of form 2**n
+  is_prime?(num-1)
+end
+
+def is_prime?(num)
+  return false if num == 1
+  (2...num).each do |fact|
+    return false if (num % fact).zero?
+  end
+  return true
+end
+
+
+# A triangular number is a number of the form (i * (i + 1)) / 2 where i is some positive integer. Substituting i with increasing integers gives the triangular number sequence. The first five numbers of the triangular number sequence are 1, 3, 6, 10, 15. Below is a breakdown of the calculations used to obtain these numbers:
+
+# i	(i * (i + 1)) / 2
+# 1	1
+# 2	3
+# 3	6
+# 4	10
+# 5	15
+# We can encode a word as a number by taking the sum of its letters based on their position in the alphabet. For example, we can encode "cat" as 24 because c is the 3rd of the alphabet, a is the 1st, and t is the 20th:
+
+# 3 + 1 + 20 = 24
+
+# Write a method triangular_word? that accepts a word as an argument and returns a boolean indicating whether or not that word's number encoding is a triangular number. You can assume that the argument contains lowercase letters.
+
+# Examples
+
+# p triangular_word?('abc')       # true
+# p triangular_word?('ba')        # true
+# p triangular_word?('lovely')    # true
+# p triangular_word?('question')  # true
+# p triangular_word?('aa')        # false
+# p triangular_word?('cd')        # false
+# p triangular_word?('cat')       # false
+# p triangular_word?('sink')      # false
+
+def triangular_word?(word)
+  alphabets = ("a".."z").to_a
+  num_code = 0
+  word.each_char do |char|
+    num_code += alphabets.index(char) + 1
+  end
+  triangular_num = 1
+  num = 1
+
+  while triangular_num <= num_code
+    return true if triangular_num == num_code
+    triangular_num = (num * (num + 1))/2
+    num += 1
+  end
+
+  return false
+end
+
+
+
+# Write a method consecutive_collapse that accepts an array of numbers as an argument. The method should return a new array that results from continuously removing consecutive numbers that are adjacent in the array. If multiple adjacent pairs are consecutive numbers, remove the leftmost pair first. For example:
+
+# [3, 4, 1] -> [1]
+# because 3 and 4 are consecutive and adjacent numbers, so we can remove them
+# [1, 4, 3, 7] -> [1, 7]
+# because 4 and 3 are consecutive and adjacent numbers, so we can remove them
+# [3, 4, 5] -> [5]
+# because 4 and 3 are consecutive and adjacent numbers, we don't target 4 and 5 since we should prefer to remove the leftmost pair
+# We can apply this rule repeatedly until we cannot collapse the array any further:
+
+# # example 1
+# [9, 8, 4, 5, 6] -> [4, 5, 6] -> [6]
+
+# # example 2
+# [3, 5, 6, 2, 1] -> [3, 2, 1] -> [1]
+# Code examples
+
+# # p consecutive_collapse([3, 4, 1])                     # [1]
+# # p consecutive_collapse([1, 4, 3, 7])                  # [1, 7]
+# # p consecutive_collapse([9, 8, 2])                     # [2]
+# # p consecutive_collapse([9, 8, 4, 5, 6])               # [6]
+# # p consecutive_collapse([1, 9, 8, 6, 4, 5, 7, 9, 2])   # [1, 9, 2]
+# # p consecutive_collapse([3, 5, 6, 2, 1])               # [1]
+# # p consecutive_collapse([5, 7, 9, 9])                  # [5, 7, 9, 9]
+# # p consecutive_collapse([13, 11, 12, 12])              # []
+
+def consecutive_collapse(nums)
+  collapsed = Array.new(nums)
+  can_be_collapsed = true
+
+  while can_be_collapsed
+
+    can_be_collapsed = false
+    iterator = 0
+    while iterator < collapsed.length-1
+
+      if collapsed[iterator] == collapsed[iterator+1]-1 || collapsed[iterator] == collapsed[iterator+1]+1
+        can_be_collapsed = true
+        collapsed.slice!(iterator..iterator+1)
+        break
+      end
+      
+      iterator += 1
+    end
+  end
+  collapsed
+end
+
+
+# Write a method pretentious_primes that takes accepts an array and a number, n, as arguments. The method should return a new array where each element of the original array is replaced according to the following rules:
+
+# when the number argument is positive, replace an element with the n-th nearest prime number that is greater than the element
+# when the number argument is negative, replace an element with the n-th nearest prime number that is less than the element
+# For example:
+
+# if element = 7 and n = 1, then the new element should be 11 because 11 is the nearest prime greater than 7
+# if the element = 7 and n = 2, then the new element should be 13 because 13 is the 2nd nearest prime greater than 7
+# if the element = 7 and n = -1, then the new element should be 5 because 5 is the nearest prime less than 7
+# if the element = 7 and n = -2, then the new element should be 3 because 3 is the 2nd nearest prime less than 7
+# Note that we will always be able to find a prime that is greater than a given number because there are an infinite number of primes (this is given by Euclid's Theorem). However, we may be unable to find a prime that is smaller than a given number, because 2 is the smallest prime. When a smaller prime cannot be calculated, replace the element with nil.
+
+# Examples
+
+# # p pretentious_primes([4, 15, 7], 1)           # [5, 17, 11]
+# # p pretentious_primes([4, 15, 7], 2)           # [7, 19, 13]
+# # p pretentious_primes([12, 11, 14, 15, 7], 1)  # [13, 13, 17, 17, 11]
+# # p pretentious_primes([12, 11, 14, 15, 7], 3)  # [19, 19, 23, 23, 17]
+# # p pretentious_primes([4, 15, 7], -1)          # [3, 13, 5]
+# # p pretentious_primes([4, 15, 7], -2)          # [2, 11, 3]
+# # p pretentious_primes([2, 11, 21], -1)         # [nil, 7, 19]
+# # p pretentious_primes([32, 5, 11], -3)         # [23, nil, 3]
+# # p pretentious_primes([32, 5, 11], -4)         # [19, nil, 2]
+# # p pretentious_primes([32, 5, 11], -5)         # [17, nil, nil]
+
+def pretentious_primes(nums, n)
+  pretense = []
+  if n > 0
+    nums.each do |num|
+      primes_after = []
+      after_num = num + 1
+      while primes_after.length < n
+        primes_after << after_num if is_prime?(after_num)
+        after_num += 1
+      end
+      pretense << primes_after.last
+    end
+  else
+   nums.each do |num|
+    primes_before = []
+    before_num = num - 1
+    while primes_before.length < n.abs
+      if before_num < 2
+        primes_before << nil
+      end
+      primes_before << before_num if is_prime?(before_num)
+      before_num -= 1
+    end
+    pretense << primes_before.last
+   end
+  end
+  return pretense
+end
+
+def is_prime?(num)
+  return false if num < 2
+  (2...num).each do |fact|
+    return false if (num % fact).zero?
+  end
+  return true
 end
