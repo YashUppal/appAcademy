@@ -24,18 +24,12 @@ class Game
   def play
     while board.empty_positions?
       board.print_board
-
       was_correct = false
-
       pos_current = current_player.get_positon
-      
       was_correct = board.place_mark(pos_current,current_player.mark)
-
       if board.win?(current_player.mark)
         print "\nHooray! #{current_player.mark} has won!\n"
-        
         board.print_board
-
         return
       else
         # TODO
