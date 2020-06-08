@@ -44,11 +44,13 @@ class List
   end
 
   def print
+    
     puts "#{"".ljust(50,"-")}"
     puts "#{label.rjust(25," ")} #{"".ljust(25," ")}"
     puts "#{"".ljust(50,"-")}"
     puts "#{"Index".ljust(5," ")} | #{"Item".ljust(28," ")} | #{"Deadline".ljust(17," ")}"
     puts "#{"".ljust(50,"-")}"
+
     
     @items.each_with_index do |item, item_idx|
       puts "#{item_idx.to_s.ljust(5," ")} | #{item.title.ljust(28," ")} | #{item.deadline.ljust(17," ")}"
