@@ -45,26 +45,25 @@ class List
 
   def print
     
-    puts "#{"".ljust(50,"-")}"
-    puts "#{label.rjust(25," ")} #{"".ljust(25," ")}"
-    puts "#{"".ljust(50,"-")}"
-    puts "#{"Index".ljust(5," ")} | #{"Item".ljust(28," ")} | #{"Deadline".ljust(17," ")}"
-    puts "#{"".ljust(50,"-")}"
+    puts "#{"".ljust(70,"-")}"
+    puts "#{label.rjust(35," ")} #{"".ljust(35," ")}"
+    puts "#{"".ljust(70,"-")}"
+    puts "#{"Index".ljust(5," ")} | #{"Item".ljust(28," ")} | #{"Deadline".ljust(17," ")} | #{"Done".ljust(20," ")}"
+    puts "#{"".ljust(70,"-")}"
 
-    
     @items.each_with_index do |item, item_idx|
-      puts "#{item_idx.to_s.ljust(5," ")} | #{item.title.ljust(28," ")} | #{item.deadline.ljust(17," ")}"
+      puts "#{item_idx.to_s.ljust(5," ")} | #{item.title.ljust(28," ")} | #{item.deadline.ljust(17," ")} | #{(item.done) ? ("✓".ljust(20, " ")) : ""}"
     end
-
-    puts "#{"".ljust(50, "-")}"
+    
+    puts "#{"".ljust(70, "-")}"
   end
 
   def print_full_item(index)
     if valid_index?(index)
-      puts "#{"".ljust(50,"-")}"
-      puts "#{@items[index].title.ljust(35," ")}#{@items[index].deadline.rjust(15," ")}"
-      puts "#{@items[index].description.ljust(50," ")}"
-      puts "#{"".ljust(50,"-")}"
+      puts "#{"".ljust(70,"-")}"
+      puts "#{@items[index].title.ljust(35," ")}#{@items[index].deadline.rjust(15," ")}#{(@items[index].done) ? ("✓".rjust(15, " ")) : ""}"
+      puts "#{@items[index].description.ljust(70," ")}"
+      puts "#{"".ljust(70,"-")}"
     end
   end
 
@@ -106,9 +105,21 @@ class List
     @items.sort_by! { |item| item.deadline }
   end
 
-end
+  def toggle_item(index)
+    @items[index].toggle
+  end
 
-# load 'list.rb'
-# list = List.new("Goals")
-# list.add_item("asdf","2020-12-12","asdf")
-# list.print
+  def remove_index(index)
+    @items.delete_at(index)
+  end
+
+  def purge
+    # @items = @items.select do |items|
+    #   !items.done
+    # end
+
+    @items.each_with_index do |item, idx|
+      @items.delete_at(idx) if item.done
+    end
+  end
+end

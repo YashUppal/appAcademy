@@ -1,6 +1,6 @@
 class Item
 
-  attr_reader :title, :deadline, :description
+  attr_reader :title, :deadline, :description, :done
 
   def self.valid_date?(date_string)
     # date should be of format 'YYYY-MM-DD'
@@ -17,9 +17,10 @@ class Item
   def initialize(title, deadline, description)
     begin
       if Item.valid_date?(deadline)
-      @title = title
-      @description = description
-      @deadline = deadline
+        @title = title
+        @description = description
+        @deadline = deadline
+        @done = false
       else
         raise
       end
@@ -46,5 +47,9 @@ class Item
 
   def description=(new_description)
     @description = new_description
+  end
+
+  def toggle
+    @done = !@done
   end
 end
