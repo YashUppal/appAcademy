@@ -1,6 +1,6 @@
 class MazeSolver
 
-  attr_reader :open_list, :maze
+  attr_reader :open_list, :maze, :closed_list
 
   def initialize(maze)
     @maze = Array.new(maze)
@@ -22,10 +22,30 @@ class MazeSolver
     true
   end
 
+  def g_cost
+    return 10
+  end
+
+  def h_cost(index)
+    end_index = find_end
+    return (end_index.first - index.first).abs + (end_index.last - index.last).abs
+  end
+
   def find_start
     @maze.each_with_index do |line,idx_row|
       line.each_with_index do |ele,idx_col|
         if ele == "S" || ele == "s"
+          return [idx_row,idx_col]
+        end
+      end
+    end
+    false
+  end
+
+  def find_end
+    @maze.each_with_index do |line,idx_row|
+      line.each_with_index do |ele,idx_col|
+        if ele == "E" || ele == "e"
           return [idx_row,idx_col]
         end
       end
@@ -56,22 +76,98 @@ class MazeSolver
         # puts
         adjacent_node_hash = {
           :current => [outer_idx,inner_idx],
-          :parent => open_list.first[:parent]
+          :parent => closed_list.last[:current],
+          :g_cost => 0,
+          :f_cost => 0,
+          :h_cost => 0
           }
 
-        if is_diag(node_index,[outer_idx,inner_idx])
-          # print [outer_idx, inner_idx]
-          adjacent_node_hash[]
-        end
-        
+        # adjacent_node_hash[:h_cost] = self.h_cost([outer_idx, inner_idx]) * self.g_cost
 
-        if maze[outer_idx][inner_idx] != "*"
+        # if is_diag(node_index,[outer_idx,inner_idx])
+        #   # adjacent_node_hash[:g_cost] = closed_list.last[:g_cost] + (1.4 * g_cost).to_int
+        #   adjacent_node_hash[:g_cost] = node_hash[:g_cost] + (g_cost * 1.4).to_int
+        # else
+        #   # adjacent_node_hash[:g_cost] = closed_list.last[:g_cost] + g_cost
+        #   adjacent_node_hash[:g_cost] = node_hash[:g_cost] + g_cost
+        # end
+
+        if maze[outer_idx][inner_idx] != "*" && !closed_list.include?(adjacent_node_hash)
           if !open_list.include?(adjacent_node_hash)
-            open_list << adjacent_node_hash
+            if [outer_idx, inner_idx] != node_index
+
+              adjacent_node_hash[:h_cost] = self.h_cost([outer_idx, inner_idx]) + adjacent_node_hash[:g_cost]
+
+              if is_diag(node_index,[outer_idx,inner_idx])
+                # adjacent_node_hash[:g_cost] = closed_list.last[:g_cost] + (1.4 * g_cost).to_int
+                adjacent_node_hash[:g_cost] = node_hash[:g_cost] + (g_cost * 1.4).to_int
+              else
+                # adjacent_node_hash[:g_cost] = closed_list.last[:g_cost] + g_cost
+                adjacent_node_hash[:g_cost] = node_hash[:g_cost] + g_cost
+              end
+
+              open_list << adjacent_node_hash
+            end
           end
         end
         # open_list << adjacent_node_hash if !open_list.include?(adjacent_node_hash)
       end
+    end
+  end
+
+  def find_123path
+    start = {
+      :current => [],
+      :parent => [],
+      :g_cost => 0,
+      :f_cost => 0,
+      :h_cost => 0
+    }
+
+    start[:current] = self.find_start
+    start[:parent] = start[:current]
+
+    while true
+
+    open_list.unshift(start)
+    
+    
+    @closed_list.push(@open_list.shift)
+
+    scan_around(start)
+
+
+    @open_list.each do |hash|
+      hash[:f_cost] = hash[:g_cost] + hash[:h_cost]
+    end
+
+    # @open_list = @open_list.sort_by { |hash| hash[:f_cost] }
+    start = @open_list.sort_by { |hash| hash[:f_cost] }.first
+
+    puts
+    puts
+    p open_list
+    puts
+    puts
+
+    # start = @open_list.first
+    @open_list = []
+    # @open_list.unshift(start)
+    # @closed_list.push(@open_list.shift)
+
+    puts
+    puts
+    # p @closed_list
+    print 
+
+
+    maze[start[:current].first][start[:current].last] = "X"
+
+    self.print_maze
+
+
+
+    sleep(1)
     end
   end
 
@@ -80,20 +176,44 @@ class MazeSolver
     start = {
       :current => [],
       :parent => [],
-      :g_cost => 0
+      :g_cost => 0,
+      :f_cost => 0,
+      :h_cost => 0
     }
 
     start[:current] = self.find_start
     start[:parent] = start[:current]
 
-    open_list << start
-    
-    scan_around(start)
+    open_list.push(start)
 
-    # p @open_list
-    # @closed_list.push(@open_list.shift)
-    # @close_list << @open_list.delete(start)
-    # p @open_list
+    # repeat
+    while true
+      puts
+      puts
+      self.print_maze
+      current_node = open_list.sort_by { |hash| hash[:f_cost] }.first
+      @open_list.delete(current_node)
+      print open_list
+      @closed_list << current_node
+      scan_around(current_node)
+      puts open_list
+      @open_list.each do |hash|
+        hash[:f_cost] = hash[:g_cost] + hash[:h_cost]
+      end
+      puts open_list
+
+      maze[current_node[:current].first][current_node[:current].last] = "X"
+
+      puts
+      puts
+      puts open_list
+      puts
+      puts
+
+      sleep(1)
+
+
+    end
   end
 
 
