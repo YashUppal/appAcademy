@@ -1,4 +1,4 @@
-class MazeSolverDiag
+class MazeSolver
 
   attr_reader :open_list, :maze, :closed_list
 
@@ -76,17 +76,19 @@ class MazeSolverDiag
 
     (node[:loc].first-1..node[:loc].first+1).each do |out_idx|
       (node[:loc].last-1..node[:loc].last+1).each do |in_idx|
-        if node[:loc] != [out_idx,in_idx]
-          adj_node = Hash.new(0)
-          adj_node = {
-            :loc => [out_idx, in_idx],
-            :parent => @open_list.first,
-            :g_cost => 0
-          }
+        if !is_diag([out_idx,in_idx],node[:loc])
+          if node[:loc] != [out_idx,in_idx]
+            adj_node = Hash.new(0)
+            adj_node = {
+              :loc => [out_idx, in_idx],
+              :parent => @open_list.first,
+              :g_cost => 0
+            }
 
-          if maze[out_idx][in_idx] != "*"
-            if !open_list.include?(adj_node)
-              @open_list << adj_node
+            if maze[out_idx][in_idx] != "*"
+              if !open_list.include?(adj_node)
+                @open_list << adj_node
+              end
             end
           end
         end
@@ -127,32 +129,33 @@ class MazeSolverDiag
 
       (lowest_f[:loc].first-1..lowest_f[:loc].first+1).each do |out_idx|
         (lowest_f[:loc].last-1..lowest_f[:loc].last+1).each do |in_idx|
+          if !is_diag([out_idx,in_idx], lowest_f[:loc])
+            if lowest_f[:loc] != [out_idx,in_idx]
+              adj_node = Hash.new(0)
+              adj_node = {
+                :loc => [out_idx, in_idx],
+                :parent => lowest_f,
+                :g_cost => 0
+              }
 
-          if lowest_f[:loc] != [out_idx,in_idx]
-            adj_node = Hash.new(0)
-            adj_node = {
-              :loc => [out_idx, in_idx],
-              :parent => lowest_f,
-              :g_cost => 0
-            }
+              # g cost calc
+              if is_diag(adj_node[:loc],lowest_f[:loc])
+                adj_node[:g_cost] = 14 + adj_node[:parent][:g_cost]
+              else
+                adj_node[:g_cost] = 10 + adj_node[:parent][:g_cost]
+              end
 
-            # g cost calc
-            if is_diag(adj_node[:loc],lowest_f[:loc])
-              adj_node[:g_cost] = 14 + adj_node[:parent][:g_cost]
-            else
-              adj_node[:g_cost] = 10 + adj_node[:parent][:g_cost]
-            end
+              # H cost calc
+              adj_node[:h_cost] = self.h_cost(adj_node[:loc])
 
-            # H cost calc
-            adj_node[:h_cost] = self.h_cost(adj_node[:loc])
+              # F cost calc
+              adj_node[:f_cost] = adj_node[:h_cost] + adj_node[:g_cost]
 
-            # F cost calc
-            adj_node[:f_cost] = adj_node[:h_cost] + adj_node[:g_cost]
-
-            if maze[adj_node[:loc].first][adj_node[:loc].last] != "*"
-              if !@closed_list.any? {|node| node[:loc] == adj_node[:loc]}
-                if !@open_list.any? {|node| node[:loc] == adj_node[:loc]}
-                  @open_list.push(adj_node)
+              if maze[adj_node[:loc].first][adj_node[:loc].last] != "*"
+                if !@closed_list.any? {|node| node[:loc] == adj_node[:loc]}
+                  if !@open_list.any? {|node| node[:loc] == adj_node[:loc]}
+                    @open_list.push(adj_node)
+                  end
                 end
               end
             end
