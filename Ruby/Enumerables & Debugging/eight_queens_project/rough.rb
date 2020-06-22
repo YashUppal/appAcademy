@@ -30,3 +30,13 @@
       outer_iterator += 1
     end
   end
+
+        if !empty_spot(board) && queen_count != @num_queens
+        while true
+          iterator = 0
+          index = tried.reverse[iterator]
+          board[index.first][index.last] = "_"
+          self.anti_traverse(index)
+          break if empty_spot(board)
+        end
+      end
