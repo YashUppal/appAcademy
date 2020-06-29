@@ -77,3 +77,23 @@ end
 
 print_that(x) # 4
 ```
+
+## Methods calling other methods
+
+* In Ruby, we can call methods defined in the top level scope, inside methods defined in the top level scope. The reason being that the methods get defined on an object call ```main```. The same reason, why we can call instance methods inside other instance methods in a class.
+
+```ruby
+def fourth_power(i)
+    square(i) * square(i)
+end
+
+def square(num)
+    num * num
+end
+
+p fourth_power(2) # => 16
+```
+
+## Global variables
+
+* Variables which can be accessed anywhere in the source code. Can be defined using ```$``` prefix. Not a good idea usually, use with caution!
