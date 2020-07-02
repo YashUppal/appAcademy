@@ -1,11 +1,15 @@
 require_relative 'board.rb'
+require_relative 'human_player.rb'
+require_relative 'computer_player.rb'
 
 class Game
 
-  attr_reader :board, :previous_position
+  attr_reader :board, :previous_position, :player
   attr_writer :previous_position
 
   def initialize
+    @player = HumanPlayer.new
+    # @player = ComputerPlayer.new
     @board = Board.new
     board.populate
     @previous_position = nil
@@ -15,10 +19,12 @@ class Game
     until self.over?
       system("clear")
       board.render
-      puts "Please enter the position of the card you would like to flip (eg 2,3)"
-      pos = gets.chomp.split(",").map!(&:to_i)
+      player.prompt
+      pos = player.get_input
+      sleep(0.4)
       if !self.card_at(pos).face_up
         self.make_guess(pos)
+        player.receive_revealed_card(pos,self.card_at(pos).value)
       else
         puts "Invalid Index"
       end
@@ -56,7 +62,7 @@ class Game
     # invalid match logic
     self.reveal_and_render(pos)
     puts "Invalid Match"
-    sleep(1.4)
+    sleep(0.4)
     self.hide_both_guesses(pos)
   end
   
@@ -64,7 +70,7 @@ class Game
     # valid match logic
     self.reveal_and_render(pos)
     puts "Valid Match"
-    sleep(1.4)
+    sleep(0.4)
   end
 
   def reveal_and_render(pos)
