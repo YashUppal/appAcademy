@@ -2,10 +2,11 @@ require_relative 'card.rb'
 
 class Board
   
-  attr_reader :grid
+  attr_reader :grid, :alphabets
 
   def initialize
     @grid = Array.new(4) { Array.new(4) } # grid of 4x4
+    @alphabets = ("A".."Z").to_a
   end
 
 
@@ -13,7 +14,6 @@ class Board
     # renders the board in a slightly nice way
     print "  #{(0...grid.length).to_a.join(" ")}\n"
     grid.each_with_index do |row,row_idx|
-      # puts "#{row_idx} #{row.map {|card| card.value}.join(" ")}"
       print "#{row_idx} "
       row.each do |card|
         if card.face_up
@@ -49,7 +49,9 @@ class Board
 
   def random_letter
     # returns a random letter from alphabet
-    return ("A".."Z").to_a.sample
+    rand = self.alphabets.sample
+    self.alphabets.delete(rand)
+    return rand
   end
 
   def random_index
@@ -94,6 +96,4 @@ class Board
       return card_at_pos.value
     end
   end
-  
-
 end

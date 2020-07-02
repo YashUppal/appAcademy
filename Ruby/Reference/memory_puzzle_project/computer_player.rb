@@ -1,11 +1,11 @@
 class ComputerPlayer
 
-  attr_reader :known_cards, :matched_cards
+  attr_reader :known_cards, :matched_cards, :history
 
   def initialize
     @known_cards = Hash.new
     @matched_cards = Array.new
-    # @matched_cards = [[0,0],[0,1]]
+    @history = Set.new
   end
 
   def prompt
@@ -15,10 +15,10 @@ class ComputerPlayer
   def get_input
     # could be done faster, checks earlier matches as well, which is time consuming
     idx = self.rand_idx
-    # return idxf
+
     if !self.matched_cards.empty?
       point = self.matched_cards.pop
-      # self.known_cards.delete([point])
+      self.history << point
       return point
     else
       self.match_form
@@ -44,9 +44,10 @@ class ComputerPlayer
   def match_form
     self.known_cards.each do |key,value|
       if self.known_cards.count { |k,v| v == value } == 2
-        self.matched_cards << key
+        if !self.history.include?(key)
+          self.matched_cards << key
+        end
       end
     end
   end
-
 end

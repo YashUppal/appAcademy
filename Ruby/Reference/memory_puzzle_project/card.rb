@@ -26,8 +26,4 @@ class Card
     # reveal a card / make it face up
     self.face_up = true
   end
-
-  # def == (other)
-  #   self.value == other.value
-  # end
 end

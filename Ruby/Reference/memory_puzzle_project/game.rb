@@ -8,8 +8,8 @@ class Game
   attr_writer :previous_position
 
   def initialize
-    @player = HumanPlayer.new
-    # @player = ComputerPlayer.new
+    # @player = HumanPlayer.new
+    @player = ComputerPlayer.new
     @board = Board.new
     board.populate
     @previous_position = nil
@@ -22,6 +22,7 @@ class Game
       player.prompt
       pos = player.get_input
       sleep(0.4)
+
       if !self.card_at(pos).face_up
         self.make_guess(pos)
         player.receive_revealed_card(pos,self.card_at(pos).value)
