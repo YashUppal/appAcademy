@@ -27,7 +27,7 @@ class Card
     self.face_up = true
   end
 
-  def ==(other)
-    self.value == other.value
-  end
+  # def == (other)
+  #   self.value == other.value
+  # end
 end

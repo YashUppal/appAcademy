@@ -13,14 +13,20 @@ class Game
 
   def play
     until self.over?
+      system("clear")
       board.render
       puts "Please enter the position of the card you would like to flip (eg 2,3)"
       pos = gets.chomp.split(",").map!(&:to_i)
-      self.make_guess(pos)
+      if !self.card_at(pos).face_up
+        self.make_guess(pos)
+      else
+        puts "Invalid Index"
+      end
     end
   end
 
   def over?
+    # return true if player has won
     if board.won?
       return true
     else
@@ -36,18 +42,49 @@ class Game
       # TODO
       # make Card#== work
       if self.card_at(pos).value == self.card_at(previous_position).value
-        # leave both face up
-        self.board.reveal(pos)
+        # keep the pair face up
+        self.valid_match(pos)
       else
-        self.card_at(pos).hide
-        self.card_at(previous_position).hide
+        # put the pair face down
+        self.invalid_match(pos)
       end
       self.previous_position = nil
     end
   end
 
+  def invalid_match(pos)
+    # invalid match logic
+    self.reveal_and_render(pos)
+    puts "Invalid Match"
+    sleep(1.4)
+    self.hide_both_guesses(pos)
+  end
+  
+  def valid_match(pos)
+    # valid match logic
+    self.reveal_and_render(pos)
+    puts "Valid Match"
+    sleep(1.4)
+  end
+
+  def reveal_and_render(pos)
+    # reveal the card at pos and render board
+    self.board.reveal(pos)
+    system("clear")
+    self.board.render
+  end
+
+  def hide_both_guesses(pos)
+    # hide cards at pos and previous_position
+    self.card_at(pos).hide
+    self.card_at(previous_position).hide
+  end
+
   def card_at(pos)
+    # return card at the give index (pos)
     return self.board.grid[pos.first][pos.last]
   end
+
+
 
 end
