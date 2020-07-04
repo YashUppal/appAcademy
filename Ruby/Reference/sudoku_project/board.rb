@@ -1,4 +1,5 @@
 require_relative 'tile.rb'
+require 'colorized_string'
 
 class Board
 
@@ -34,28 +35,43 @@ class Board
     @grid = Board.from_file(file)
   end
 
+  def color(tile)
+    # returns the appropriate color for tile based on given/!given
+    if tile.given
+      ColorizedString[tile.value.to_s].colorize(:light_red)
+    else
+      ColorizedString[tile.value.to_s].colorize(:light_blue)
+    end
+  end
+
   def render
     # render the board in a slightly aesthetic form
     puts
     row_count = 0
-
     self.grid.each do |row|
       if row_count == 3
         puts "".rjust(14,"⸻")
         row_count = 0
       end
 
-      print " #{row[0...3].map(&:value).join("")} ⎟ #{row[3...6].map(&:value).join("")} ⎟ #{row[6...9].map(&:value).join("")}\n"
+      prc = Proc.new { |ele| (ele.value.zero?)?(" "):(self.color(ele)); }
+
+      print " #{row[0...3].map(&prc).join("")} ⎟ #{row[3...6].map(&prc).join("")} ⎟ #{row[6...9].map(&prc).join("")}\n"
       row_count += 1
     end
     puts
   end
 
-
   def update_at(value,position)
     # update the tile at given position with given value
     x,y = position
-    self.grid[x][y].value = value
+
+    if !self.grid[x][y].given
+      self.grid[x][y].value = value
+      return true
+    else
+      return false
+    end
   end
   
   def block
@@ -80,10 +96,8 @@ class Board
         row_count = 0
       end
     end
-
     return blocked_grid
   end
-
 
   def solved?
     # returns true if entire board is solved, false otherwise
