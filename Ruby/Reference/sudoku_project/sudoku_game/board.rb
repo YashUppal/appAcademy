@@ -69,9 +69,8 @@ class Board
     if !self.grid[x][y].given
       self.grid[x][y].value = value
       return true
-    else
-      return false
     end
+    return false
   end
   
   def block
