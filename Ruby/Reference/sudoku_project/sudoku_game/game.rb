@@ -34,7 +34,7 @@ class Game
     system("clear")
     puts ColorizedString["Sudoku"].colorize(:light_cyan)
     self.board.render
-    print ColorizedString["\nCongrats, Puzzle Solved using Backtracking:)\n\n"].colorize(:light_green)
+    print ColorizedString["\nCongrats, Puzzle Solved :)\n\n"].colorize(:light_green)
     print ColorizedString["\nThank you for playing!\n\n"].colorize(:light_green)
   end
 
