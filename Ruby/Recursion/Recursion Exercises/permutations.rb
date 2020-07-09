@@ -1,22 +1,23 @@
 def permutations(array)
-
   if array.length == 2
     return array.reverse
   end
-
-  # permed = []
-
-  # array.length.times do 
-  #   permed += [array] + [[array.first] + permutations(array[1..-1])]
-  #   array = array.rotate
-  # end
-
-  # permed
-
-  pe = []
-  array.length.times do
-    pe += [[array[0]] + permutations(array[1..-1])]
+  permd = []
+  
+  array.each_with_index do |ele,idx|
+    if array[1..-1].length > 2
+      permd +=  array_mult(array.first,permutations(array[1..-1]))
+    else
+      permd << array
+      permd << array[0..0] + permutations(array[1..-1])
+    end
     array = array.rotate
   end
-  pe
+  permd
+end
+
+def array_mult(val,arr)
+  arr.map do |subarr|
+    subarr.unshift(val)
+  end
 end
