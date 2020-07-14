@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Yash's Recipe</title>
+    </head>
+    <body>
+        <header>
+            <img src="https://assets.aaonline.io/fullstack/html-css/micro-projects/appacademylogo.png">
+            <nav>
+                <ul>
+                    <li><a href="#description">Description</a></li>
+                    <li><a href="#ingredients">Ingredients</a></li>
+                    <li><a href="#directions">Directions</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <aside>
+            <h2 id="ingredients">Ingredients</h2>
+            <ul>
+                <li>350ml Milk</li>
+                <li>a cup of crushed ice</li>
+                <li>a cup of cut strawberries</li>
+                <li>1 Scoop Strawberry Whey</li>
+                <li>1 teaspoon honey</li>
+            </ul>
+        </aside>
+
+        <section>
+        <h2>Protein Smoothie</h2>
+            <figure>
+                <image src="https://cdn.pixabay.com/photo/2020/05/12/16/59/smoothie-5163954_960_720.jpg"
+                    alt="photo of the Protein Smoothie Health Shake">
+                <figcaption><a href="https://en.wikipedia.org/wiki/Health_shake">Protein Smoothie Health Shake</a></figcaption>
+            </figure>
+            <h2 id="description">Description</h2>
+            <p>The world famous Protein Smoothie Health Shake recipe that is tasty and rich in macro-micro nutrients. Ideal as a post/pre workout drink or as a meal replacement. Easy to prepare, quick to be devoured.</p>
+            <h2 id="directions">Directions</h2>
+            <ol>
+                <li>Put the ingredients in a blender.</li>
+                <li>Blend until smooth</li>
+                <li>Serve with strawberries as garnishing</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2 id="reviews">Reviews</h2>
+            <form>
+                <label for="reviewer_name">Reviewer Name</label>
+                <input type="text" id="reviewer_name">
+
+                <label id="rating">Rating</label>
+                
+                <label for="rating_1">1</label>
+                <input name="rating" id="rating_1" type="radio" value="1" checked>
+
+                <label for="rating_2">2</label>
+                <input name="rating" id="rating_2" type="radio" value="2">
+
+                <label for="rating_3">3</label>
+                <input name="rating" id="rating_3" type="radio" value="3">
+
+                <label for="rating_4">4</label>
+                <input name="rating" id="rating_4" type="radio" value="4">
+
+                <label for="rating_5">5</label>
+                <input name="rating" id="rating_5" type="radio" value="5">
+                
+                <label for="expertise">Cooking Expertise</label>
+                <select name="expertise">
+                    <option disabled selected>Select Cooking Expertise</option>
+                    <option>Sometimes Cook</option>
+                    <option>Cook Everyday</option>
+                    <option>Cooking is a Hobby</option>
+                    <option>Professional Chef</option>
+                </select>
+
+                <label for="review">Review
+                    <textarea id="review" cols="30" rows="10">
+                    </textarea>
+                </label>
+
+                <input type="submit" value="Submit Review">
+            </form>
+        </section>
+
+        <footer><a>Original Recipe by John Doe</a></footer>
+        <!-- Recipe By - John Doe -->
+    </body>
+</html>
