@@ -5,6 +5,7 @@ class Board
 
   def initialize(size)
     @grid = Array.new(size) { Array.new(size) { Tile.new("_") } }
+    self.seed_bombs
   end
 
   def render

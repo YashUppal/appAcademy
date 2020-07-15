@@ -1,4 +1,5 @@
 require_relative 'board.rb'
+require 'yaml'
 
 
 class Game
@@ -10,8 +11,6 @@ class Game
 
 
   def run
-    self.board.seed_bombs
-
     until self.game_over?
       system("clear")
 
@@ -28,6 +27,19 @@ class Game
         self.board.unflag(idx)
       elsif command == "r"
         self.board.reveal(idx)
+      elsif command == "save"
+        puts "Saving game..."; sleep(2)
+        File.open("save.yml","w") { |file| file.write(self.to_yaml) }
+      elsif command == "exit"
+        puts "Do you want to save before quitting? (y/n)"
+        save = gets.chomp.downcase
+        if save == "y"
+          puts "Saving..."
+          File.open("save.yml","w") { |file| file.write(self.to_yaml) }
+          exit
+        else
+          exit
+        end
       end
     end
 

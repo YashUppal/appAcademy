@@ -17,8 +17,21 @@ end
 
 welcome
 
-print "Please enter a size for the grid : "
-grid_size = gets.chomp.to_i
-g = Game.new(grid_size)
-g.run
 
+print "Would you like to continue where you left off? (y/n) "
+cont = gets.chomp
+
+
+begin
+  if cont.downcase == "y"
+    g = YAML.load(File.read("save.yml"))
+    g.run
+  else
+    print "Please enter a size for the grid : "
+    grid_size = gets.chomp.to_i
+    g = Game.new(grid_size)
+    g.run
+  end
+rescue
+  puts "No savegame found :("
+end
