@@ -15,7 +15,18 @@ def welcome
 
   puts ColorizedString[welcome_banner].light_blue
 
-  sleep(2)
+  print ColorizedString["\nInstructions: Reveal the squares, avoid the bombs, flag or unflag any suspicious positions and take note of the numbers :)\n\n"].light_blue
+
+  print ColorizedString["\nKey Mappings:\n"].light_blue
+  print ColorizedString["\nReveal: rxy to reveal the index x,y.\n\n"].light_blue
+  print ColorizedString["\nFlag: fxy to flag the index x,y.\n\n"].light_blue
+  print ColorizedString["\nUnflag: uxy to unflag the index x,y.\n\n"].light_blue
+  print ColorizedString["\nSave: sav to Save the game.\n\n"].light_blue
+  print ColorizedString["\nExit: exi to Exit the game.\n\n"].light_blue
+
+
+  
+  sleep(4)
   system("clear")
 end
 
