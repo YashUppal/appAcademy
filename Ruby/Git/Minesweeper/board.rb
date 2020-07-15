@@ -103,7 +103,14 @@ class Board
     adjacent_indices.each do |adjidx|
       count += 1 if self.grid[adjidx.first][adjidx.last].value == "☠"
     end
-    count
+
+    if count > 0 && count < 2
+      return ColorizedString[count.to_s].light_green
+    elsif count > 1 && count < 3
+      return ColorizedString[count.to_s].light_blue
+    else
+      return ColorizedString[count.to_s].light_red
+    end
   end
 
   def inbound(idx)

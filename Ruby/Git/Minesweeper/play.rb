@@ -1,8 +1,9 @@
 require_relative 'game.rb'
+require 'colorized_string'
 
 def welcome
   system("clear")
-  puts "
+  welcome_banner = "
    __  __ _____ _   _ ______  _______          ________ ______ _____  ______ _____  
   |  \\/  |_   _| \\ | |  ____|/ ____\\ \\        / /  ____|  ____|  __ \\|  ____|  __ \\ 
   | \\  / | | | |  \\| | |__  | (___  \\ \\  /\\  / /| |__  | |__  | |__) | |__  | |__) |
@@ -11,6 +12,9 @@ def welcome
   |_|  |_|_____|_| \\_|______|_____/    \\/  \\/   |______|______|_|    |______|_|  \\_\\
                                                                                                                                                                       
 "
+
+  puts ColorizedString[welcome_banner].light_blue
+
   sleep(2)
   system("clear")
 end
