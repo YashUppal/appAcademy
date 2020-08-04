@@ -2,14 +2,19 @@ require_relative 'slideable'
 
 class Rook < Piece
   include Slideable
-  attr_reader :board, :pos
+  attr_reader :board, :pos, :color
 
   def initialize(color,board,pos)
     super
+    if self.color == :black
+      @symbol = " ♜ "
+    else
+      @symbol = " ♖ "
+    end
   end
 
   def symbol
-    return self.symbol
+    return @symbol
   end
 
   protected

@@ -5,4 +5,8 @@ class Piece
     @board = board
     @pos = pos
   end
+
+  def symbol
+    # overwritten by subclass
+  end
 end

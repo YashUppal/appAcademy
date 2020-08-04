@@ -40,9 +40,10 @@ module Stepable
       if sub.abs == 1
         moves << [x+sub,y-2]
         moves << [x+sub,y+2] 
-      if sub.abs == 2
+      elsif sub.abs == 2
         moves << [x+sub, y-1] 
         moves << [x+sub, y+1]
+      end
     end
 
     return moves.select { |point| self.within_bounds(point) }
@@ -57,3 +58,4 @@ module Stepable
   def move_diffs
     # overwritten by subclass
   end
+end

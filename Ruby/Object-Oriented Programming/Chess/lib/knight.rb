@@ -1,15 +1,20 @@
 require_relative 'stepable'
 
 class Knight < Piece
-  include Slideable
-  attr_reader :board, :pos
+  include Stepable
+  attr_reader :board, :pos, :color
 
   def initialize(color,board,pos)
     super
+    if self.color == :black
+      @symbol = " ♞ "
+    else
+      @symbol = " ♘ "
+    end
   end
 
   def symbol
-    return self.symbol
+    return @symbol
   end
 
   protected
