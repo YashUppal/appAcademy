@@ -47,9 +47,26 @@ class Board
   def move_piece(start_pos, end_pos)
     raise ArgumentError.new "No piece at #{end_pos}" if self.rows[start_pos.first][start_pos.last].nil?
 
+    if !self.rows[start_pos.first][start_pos.last].valid_moves.include?(end_pos)
+      raise ArgumentError.new "Leaves you in check :("
+    end
+
     piece_to_move = self.rows[start_pos.first][start_pos.last]
     self.rows[start_pos.first][start_pos.last] = NullPiece.instance
     self.rows[end_pos.first][end_pos.last] = piece_to_move
+
+  rescue ArgumentError => e
+    puts "An Exception occured :( : #{e.message}"
+  end
+
+  def move_piece!(start_pos,end_pos)
+
+    raise ArgumentError.new "No piece at #{end_pos}" if self.rows[start_pos.first][start_pos.last].nil?
+
+    piece_to_move = self.rows[start_pos.first][start_pos.last]  
+    self.rows[start_pos.first][start_pos.last] = NullPiece.instance
+    self.rows[end_pos.first][end_pos.last] = piece_to_move
+
 
   rescue ArgumentError => e
     puts "An Exception occured :( : #{e.message}"
@@ -116,6 +133,19 @@ class Board
       end
     end
     return false
+  end
+
+  def dup
+    duplicate_board = self.dup
+
+    @rows.each do |row|
+      duplicate_row = Array.new
+      row.each do |ele|
+        duplicate_row << ele.dup
+      end
+      duplicated_board << duplicate_row
+    end
+    return duplicate_board
   end
 
 end

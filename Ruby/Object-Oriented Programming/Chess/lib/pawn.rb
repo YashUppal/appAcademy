@@ -19,6 +19,10 @@ class Pawn < Piece
     return [:pawn]
   end
 
+  def moves
+    self.forward_steps
+  end
+
   private
   def at_start_row?
     self.pos.first == 1 || self.pos.first == 6
@@ -33,15 +37,15 @@ class Pawn < Piece
   end
 
   def forward_steps
+    x,y = pos
     if x == 1
       return [[x,y+1],[x,y+2]]
     elsif x == 6
       return [[x,y-1],[x,y-2]]
     end
-    x,y = pos
     y += self.forward_dir
 
-    return [x,y] if self.board[x,y].instance_of?(NullPiece)
+    return [[x,y]] if self.board[x,y].instance_of?(NullPiece)
   end
 
   def side_attacks

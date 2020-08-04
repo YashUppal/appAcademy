@@ -3,8 +3,9 @@ require_relative 'board.rb'
 require_relative 'cursor.rb'
 
 class Display
-  def initialize
-    @board = Board.new
+  attr_reader :cursor
+  def initialize(board)
+    @board = board
     @cursor = Cursor.new([0,0],@board)
   end 
 
@@ -38,11 +39,13 @@ class Display
 
   def run
     # loop and render
-
+    input = nil
     while true
       system("clear")
       self.render
-      @cursor.get_input
+      input = @cursor.get_input
+      break if !input.nil?
     end
+    return input
   end
 end

@@ -18,7 +18,7 @@ class King < Piece
   end
 
   protected
-  def move_dirs
+  def move_diffs
     return [:king]
   end
 

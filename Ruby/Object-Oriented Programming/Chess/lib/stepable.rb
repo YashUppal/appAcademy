@@ -19,16 +19,21 @@ module Stepable
 
     x,y = self.pos
 
-    x = x - 1
-    while x < x + 2
-      y = y - 1
-      while y < y + 2
-        moves << [x,y] if self.within_bounds([x,y])
-        y += 1
-      end
-      x += 1
-    end
-    return moves
+    # x = x - 1
+    # while x <= x + 2
+    #   y = y - 1
+    #   yy = y+2
+    #   while y <= yy
+    #     moves << [x,y] #if self.within_bounds([x,y])
+    #     y = y + 1
+    #   end
+    #   x += 1
+    # end
+
+    moves = [[x-1,y-1],[x-1,y],[x-1,y+1],[x,y-1],[x,y],[x,y+1],[x+1,y-1],[x+1,y],[x+1,y+1]]
+
+
+    return moves.select { |point| self.within_bounds(point) }
   end
 
   def knight_moves

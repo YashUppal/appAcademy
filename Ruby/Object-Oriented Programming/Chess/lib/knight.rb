@@ -18,7 +18,7 @@ class Knight < Piece
   end
 
   protected
-  def move_dirs
+  def move_diffs
     return [:knight]
   end
 end

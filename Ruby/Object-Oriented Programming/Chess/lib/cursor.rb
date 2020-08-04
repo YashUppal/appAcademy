@@ -102,5 +102,6 @@ class Cursor
     else
       @selected = true
     end
+    return @cursor_pos
   end
 end
