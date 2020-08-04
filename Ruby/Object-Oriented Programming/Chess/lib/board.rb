@@ -77,4 +77,45 @@ class Board
     (x < 8 && x >= 0) && (y < 8 && y >= 0)
   end
 
+  def in_check?(color)
+    king = nil
+    king_pos = nil
+    @rows.each_with_index do |row,row_idx|
+      row.each_with_index do |ele,col_idx|
+        if ele.is_a?(King) && ele.color == color
+          king = ele
+          king_pos = [row_idx,col_idx]
+        end
+      end
+    end
+    
+    @rows.each do |row|
+      row.each do |ele|
+        if ele.color != color
+          if ele.moves.include?(king_pos)
+            return true
+          end
+        end
+      end
+    end
+    return false
+  end
+
+  def checkmate(color)
+    player_moves = Array.new
+    if self.in_check?(color)
+      @rows.each do |row|
+        row.each do |ele|
+          if ele.color == color
+            player_moves += ele.moves
+          end
+        end
+      end
+      if player_moves.empty?
+        return true
+      end
+    end
+    return false
+  end
+
 end
