@@ -13,5 +13,14 @@ describe Array do
     end
   end
 
-  
+  describe "#two_sum" do
+    subject(:arr) { Array.new([-1,0,2,-2,1]) }
+    it "is called on an array" do
+      expect {arr.two_sum}.to_not raise_error
+    end
+
+    it "it returns pairs of positions, where elements sum to zero" do
+      expect(arr.two_sum).to eq([[0,4],[2,3]])
+    end
+  end
 end
