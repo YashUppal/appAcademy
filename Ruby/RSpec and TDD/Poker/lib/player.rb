@@ -28,8 +28,10 @@ class Player
     if action == "fold"
       @hand = []
       @pot = 0
+      return :fold
     elsif action == "bet"
       @pot -= 1
+      return 1
     end
   end
 end
