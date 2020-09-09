@@ -70,3 +70,42 @@ def merge_sort(arr)
 
   merge(merge_sort(part_1),merge_sort(part_2))
 end
+
+def clever_octopus
+  fishes = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
+  longest_fish = fishes.first
+  fishes.each do |fish|
+    if fish.length > longest_fish.length
+      longest_fish = fish
+    end
+  end
+  return longest_fish
+end
+
+tiles_array = ["up", "right-up", "right", "right-down", "down", "left-down", "left",  "left-up" ]
+
+def slow_dance(direction,tiles_array)
+  index = 0
+  while index < tiles_array.length
+    if direction == tiles_array[index]
+      break
+    end
+    index += 1
+  end
+  return index
+end 
+
+new_tiles_data_structure = {
+  "up" => 0,
+  "right-up" => 1,
+  "right" => 2,
+  "right-down" => 3,
+  "down" => 4,
+  "left-down" => 5,
+  "left" => 6,
+  "left-up" => 7
+}
+
+def fast_dance(direction,new_tiles_data_structure)
+  return new_tiles_data_structure[direction]
+end
