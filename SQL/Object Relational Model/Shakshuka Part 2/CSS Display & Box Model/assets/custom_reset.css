@@ -1,0 +1,19 @@
+header,img,nav,li,h2,ul,aside,header,section,h1,figure,figcaption,p,form,label,input,select,option,footer,body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: inherited;
+}   
+
+ul,ol {
+    list-style-type: none;
+}
+
+body {
+    line-height: 1.5;
+}
+
+img {
+    /* width: inherited; */
+    width: 100%;
+}
