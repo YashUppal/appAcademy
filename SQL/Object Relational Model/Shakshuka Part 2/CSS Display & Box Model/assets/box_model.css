@@ -73,7 +73,7 @@ h2 + .user_review {
 }
 
 nav li {
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 a {
@@ -90,11 +90,11 @@ img {
 
 nav {
   /* display: inline-block; */
-  float:right;
+  /* float:right; */
 }
 
 header img {
-  float:left;
+  /* float:left; */
 }
 
 .clearfix::after {
@@ -156,4 +156,13 @@ textarea#review {
 
 footer {
   display: inline-block;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+header nav ul {
+  display: flex;
 }
