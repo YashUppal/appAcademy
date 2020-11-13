@@ -55,6 +55,7 @@ VALUES
     ("John","Doe"),
     ("Jackie","Chan"),
     ("Jane","Doe");
+    -- ("Bill","Smith");
 
 
 INSERT INTO
@@ -69,7 +70,10 @@ INSERT INTO
 VALUES
     (1,2),
     (2,3),
-    (3,1);
+    (3,1),
+    (2,2),
+    (3,2),
+    (2,1);
 
 INSERT INTO
     replies(body,user_id,parent_id,question_id)
@@ -81,4 +85,9 @@ INSERT INTO
     question_likes
 VALUES
     (1,2),
-    (2,2);
+    (2,2),
+    (3,1),
+    (2,1),
+    (1,1);
+    -- (3,2);
+    -- (4,2);
