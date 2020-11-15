@@ -165,7 +165,6 @@ def best_value
       title,price
     HAVING
       price/COUNT(song) < 0.5
-    
   SQL
 end
 
@@ -223,76 +222,30 @@ def expensive_tastes
   # HINT: Start by getting the number of tracks per album. You can do this in a
   # subquery. Next, JOIN the styles table to this result and use aggregates to
   # determine the average price per track.
-  execute(<<-SQL)
-    SELECT
-      style,price,COUNT(song)
-    FROM
-      albums
-    JOIN
-      tracks
-    ON
-      albums.asin = tracks.album
+
+    execute(<<-SQL) 
+      SELECT
+      style, price/song_count
+    FROM 
+        (
+      SELECT
+        asin,title,COUNT(DISTINCT song) AS song_count,price
+      FROM
+        albums
+      JOIN
+        tracks
+      ON
+        albums.asin = tracks.album
+      GROUP BY
+        title, asin, price
+        ) AS foo
     JOIN
       styles
     ON
-      styles.album = albums.asin
+      foo.asin = styles.album
     GROUP BY
-      style, price
-    HAVING
-      style LIKE '%Symphonies%'
+      style, price/song_count
+    ORDER BY
+      price/song_count DESC
   SQL
 end
-
-
-    # SELECT
-    #   style, price/song_count
-    # FROM 
-    #     (
-    #   SELECT
-    #     asin,title,COUNT(DISTINCT song) AS song_count,price
-    #   FROM
-    #     albums
-    #   JOIN
-    #     tracks
-    #   ON
-    #     albums.asin = tracks.album
-    #   GROUP BY
-    #     title, asin, price
-    #     ) AS foo
-    # JOIN
-    #   styles
-    # ON
-    #   foo.asin = styles.album
-    # GROUP BY
-    #   style, price/song_count
-    # ORDER BY
-    #   price/song_count DESC
-
-
-    # SELECT
-    #   style, price/song_count
-    # FROM 
-    #     (
-    #   SELECT
-    #     asin,title,COUNT(asin) AS song_count,price
-    #   FROM
-    #     albums
-    #   JOIN
-    #     tracks
-    #   ON
-    #     albums.asin = tracks.album
-    #   GROUP BY
-    #     asin
-    #     ) AS foo
-    # JOIN
-    #   styles
-    # ON
-    #   foo.asin = styles.album
-    # GROUP BY
-    #   style, price/song_count
-    # HAVING
-    #   price/song_count IS NOT NULL
-    # ORDER BY
-    #   price/song_count DESC
-    # LIMIT
-    #   5
