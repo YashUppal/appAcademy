@@ -16,7 +16,7 @@
 
 ### Convention over Configuration
 
-* The concept of CoC believes in adhering to the default configuration built into the framework, and make minor changes only for doing something unconventional. This allows rapid development, unified app structure and projects are easier to understand since they follow the conventions.
+* The concept of CoC believes in adhering to the default configuration built into the framework, and make minor changes only for doing something unconventional. This allows rapid development, unified app structure and projects are easier to understand since they follow the conventions. E.g. - If we have a ```cats``` database, the default model name would be ```Cat``` and default controller name would be ```CatsController```
 
 ### REST
 
