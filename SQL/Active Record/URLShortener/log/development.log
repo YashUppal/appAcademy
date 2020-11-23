@@ -403,3 +403,594 @@ DEPRECATION WARNING: SourceAnnotationExtractor is deprecated! Use Rails::SourceA
   [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
   [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mShortenedUrl Load (1.2ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
+  [1m[36mVisit Load (1.3ms)[0m  [1m[34mSELECT "visits".* FROM "visits"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "visits" ON "shortened_urls"."id" = "visits"."shortened_url_id" WHERE "visits"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "visits" ON "shortened_urls"."id" = "visits"."shortened_url_id" WHERE "visits"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 3]]
+  [1m[36mVisit Load (0.6ms)[0m  [1m[34mSELECT "visits".* FROM "visits"[0m
+  [1m[36mVisit Load (0.5ms)[0m  [1m[34mSELECT "visits".* FROM "visits" ORDER BY "visits"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mVisit Load (0.5ms)[0m  [1m[34mSELECT "visits".* FROM "visits" ORDER BY "visits"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1[0m  [["email", "user1@example.org"]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1[0m  [["email", "user1@example.org"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1[0m  [["email", "user1@example.org"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1[0m  [["email", "user1@example.org"]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "FwTG322VC_XSDkEdqCAyqg"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:15:in `random_code'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[36mShortenedUrl Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "FwTG322VC_XSDkEdqCAyqg"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[36mShortenedUrl Create (1.3ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("user_id", "long_url", "short_url") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 1], ["long_url", "www.website.com"], ["short_url", "FwTG322VC_XSDkEdqCAyqg"]]
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "QIvaeO2FEkb8FV8dNGKm6A"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:15:in `random_code'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[36mShortenedUrl Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "QIvaeO2FEkb8FV8dNGKm6A"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[36mShortenedUrl Create (0.4ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("user_id", "long_url", "short_url") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 1], ["long_url", "www.wesbite.com"], ["short_url", "QIvaeO2FEkb8FV8dNGKm6A"]]
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "pwKWRxdvi_LOv8ghxEYT7A"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:15:in `random_code'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[36mShortenedUrl Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "pwKWRxdvi_LOv8ghxEYT7A"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[36mShortenedUrl Create (0.6ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("user_id", "long_url", "short_url") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 1], ["long_url", "www.website.com"], ["short_url", "pwKWRxdvi_LOv8ghxEYT7A"]]
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/shortened_url.rb:21:in `factory'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mVisit Load (0.4ms)[0m  [1m[34mSELECT "visits".* FROM "visits"[0m
+  [1m[36mShortenedUrl Load (0.7ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "pwKWRxdvi_LOv8ghxEYT7A"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mVisit Create (1.1ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["shortened_url_id", 6], ["created_at", "2020-11-23 05:05:43.228731"], ["updated_at", "2020-11-23 05:05:43.228731"]]
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "pwKWRxdvi_LOv8ghxEYT7A"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mVisit Create (0.7ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["shortened_url_id", 6], ["created_at", "2020-11-23 05:08:13.282000"], ["updated_at", "2020-11-23 05:08:13.282000"]]
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "pwKWRxdvi_LOv8ghxEYT7A"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "pwKWRxdvi_LOv8ghxEYT7A"], ["LIMIT", 1]]
+  [1m[36mVisit Load (0.3ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 6]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "www.website.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "pwKWRxdvi_LOv8ghxEYT7A"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mVisit Create (0.6ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["shortened_url_id", 6], ["created_at", "2020-11-23 05:10:38.715287"], ["updated_at", "2020-11-23 05:10:38.715287"]]
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "pwKWRxdvi_LOv8ghxEYT7A"], ["LIMIT", 1]]
+  [1m[36mVisit Load (0.3ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 6]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "pwKWRxdvi_LOv8ghxEYT7A"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mVisit Create (0.7ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["shortened_url_id", 6], ["created_at", "2020-11-23 05:11:11.708732"], ["updated_at", "2020-11-23 05:11:11.708732"]]
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mShortenedUrl Load (1.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "pwKWRxdvi_LOv8ghxEYT7A"], ["LIMIT", 1]]
+  [1m[36mVisit Load (1.0ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4762635147840476445)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTagTopics (20201123053641)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (24.6ms)[0m  [1m[35mCREATE TABLE "tag_topics" ("id" bigserial primary key, "topic" character varying)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201123053641"]]
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4762635147840476445)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4762635147840476445)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTaggings (20201123053942)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "taggings" ("id" bigserial primary key, "url_id" integer, "tag_id" integer)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201123053942"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4762635147840476445)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTagTopic Load (0.5ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTagTopic Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "tag_topics" WHERE "tag_topics"."topic" = $1 LIMIT $2[0m  [["topic", "News"], ["LIMIT", 1]]
+  [1m[36mTagTopic Create (0.7ms)[0m  [1m[32mINSERT INTO "tag_topics" ("topic") VALUES ($1) RETURNING "id"[0m  [["topic", "News"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTagTopic Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "tag_topics" WHERE "tag_topics"."topic" = $1 LIMIT $2[0m  [["topic", "Tech"], ["LIMIT", 1]]
+  [1m[36mTagTopic Create (0.4ms)[0m  [1m[32mINSERT INTO "tag_topics" ("topic") VALUES ($1) RETURNING "id"[0m  [["topic", "Tech"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTagTopic Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "tag_topics" WHERE "tag_topics"."topic" = $1 LIMIT $2[0m  [["topic", "Music"], ["LIMIT", 1]]
+  [1m[36mTagTopic Create (0.4ms)[0m  [1m[32mINSERT INTO "tag_topics" ("topic") VALUES ($1) RETURNING "id"[0m  [["topic", "Music"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTagTopic Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tag_topics" WHERE "tag_topics"."topic" = $1 LIMIT $2[0m  [["topic", "Sports"], ["LIMIT", 1]]
+  [1m[36mTagTopic Create (0.3ms)[0m  [1m[32mINSERT INTO "tag_topics" ("topic") VALUES ($1) RETURNING "id"[0m  [["topic", "Sports"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics"[0m
+  [1m[36mTaggings Load (2.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings"[0m
+  [1m[36mTaggings Load (0.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings"[0m
+  [1m[36mShortenedUrl Load (1.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTaggings Create (1.7ms)[0m  [1m[32mINSERT INTO "taggings" ("url_id", "tag_id") VALUES ($1, $2) RETURNING "id"[0m  [["url_id", 1], ["tag_id", 1]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTaggings Create (0.4ms)[0m  [1m[32mINSERT INTO "taggings" ("url_id", "tag_id") VALUES ($1, $2) RETURNING "id"[0m  [["url_id", 2], ["tag_id", 1]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTaggings Create (0.4ms)[0m  [1m[32mINSERT INTO "taggings" ("url_id", "tag_id") VALUES ($1, $2) RETURNING "id"[0m  [["url_id", 3], ["tag_id", 2]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTaggings Load (0.4ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings"[0m
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTaggings Create (0.3ms)[0m  [1m[32mINSERT INTO "taggings" ("url_id", "tag_id") VALUES ($1, $2) RETURNING "id"[0m  [["url_id", 4], ["tag_id", 3]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTaggings Create (0.4ms)[0m  [1m[32mINSERT INTO "taggings" ("url_id", "tag_id") VALUES ($1, $2) RETURNING "id"[0m  [["url_id", 5], ["tag_id", 3]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTaggings Load (0.4ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings"[0m
+  [1m[36mShortenedUrl Load (0.2ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTaggings Load (0.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."id" = $1[0m  [["id", nil]]
+  [1m[36mTaggings Load (0.5ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings"[0m
+  [1m[36mShortenedUrl Load (0.2ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTaggings Load (0.3ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."url_id" = $1[0m  [["url_id", 1]]
+  [1m[36mTaggings Load (1.1ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings"[0m
+DEPRECATION WARNING: SourceAnnotationExtractor is deprecated! Use Rails::SourceAnnotationExtractor instead. (called from <main> at /home/revenge/Documents/appAcademy/SQL/Active Record/URLShortener/bin/rails:9)
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 1]]
+  [1m[36mShortenedUrl Load (1.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 2]]
+  [1m[36mShortenedUrl Load (1.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 3]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 4]]
+  [1m[36mShortenedUrl Load (1.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.6ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 5]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.5ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 6]]
+  [1m[36mTaggings Load (1.1ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings"[0m
+  [1m[36mShortenedUrl Load (1.2ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 5]]
+  [1m[36mTagTopic Load (1.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics"[0m
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" WHERE "tag_topics"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" WHERE "tag_topics"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTaggings Load (0.4ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings"[0m
+  [1m[36mTagTopic Load (1.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" WHERE "tag_topics"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" WHERE "tag_topics"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" WHERE "tag_topics"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1[0m  [["id", nil]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" WHERE "tag_topics"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.6ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics"[0m
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTaggings Load (0.3ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" ORDER BY "taggings"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1[0m  [["id", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTaggings Load (0.3ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+DEPRECATION WARNING: SourceAnnotationExtractor is deprecated! Use Rails::SourceAnnotationExtractor instead. (called from <main> at /home/revenge/Documents/appAcademy/SQL/Active Record/URLShortener/bin/rails:9)
+DEPRECATION WARNING: SourceAnnotationExtractor is deprecated! Use Rails::SourceAnnotationExtractor instead. (called from <main> at /home/revenge/Documents/appAcademy/SQL/Active Record/URLShortener/bin/rails:9)
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.0ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" ASC[0m  [["tag_id", 1]]
+  [1m[36mShortenedUrl Load (1.0ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mVisit Load (0.8ms)[0m  [1m[34mSELECT "visits".* FROM "visits"[0m
+  [1m[36mTagTopic Load (0.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.7ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" ASC[0m  [["tag_id", 1]]
+  [1m[36mShortenedUrl Load (0.8ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.6ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.8ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[36mShortenedUrl Load (1.0ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[36mShortenedUrl Load (1.0ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.6ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.1ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[36mTagTopic Load (1.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" DESC[0m  [["tag_id", 1]]
+  [1m[36mShortenedUrl Load (1.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" DESC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (1.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" ASC[0m  [["tag_id", 1]]
+  [1m[36mShortenedUrl Load (1.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.7ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" ASC[0m  [["tag_id", 1]]
+  [1m[36mShortenedUrl Load (0.7ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (2.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" ASC[0m  [["tag_id", 1]]
+  [1m[36mShortenedUrl Load (3.0ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.5ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY shortened_urls.num_clicks desc[0m  [["tag_id", 1]]
+  [1m[36mShortenedUrl Load (0.8ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY shortened_urls.num_clicks desc LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (2.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY shortened_urls.num_clicks desc LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (3.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY shortened_urls.num_clicks desc LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (0.5ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" ASC[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" DESC[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.1ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (3.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" DESC[0m  [["tag_id", 1]]
+  [1m[36mShortenedUrl Load (3.2ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" DESC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (0.5ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.7ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.6ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.2ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.0ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 1]]
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[36mVisit Load (1.4ms)[0m  [1m[34mSELECT "visits".* FROM "visits"[0m
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.2ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 1]]
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mVisit Load (1.2ms)[0m  [1m[34mSELECT "visits".* FROM "visits"[0m
+  [1m[36mShortenedUrl Load (1.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
+  [1m[36mTagTopic Load (1.1ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.1ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[36mShortenedUrl Load (2.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY num_clicks desc[0m
+  [1m[36mShortenedUrl Load (3.0ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY num_clicks desc LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mShortenedUrl Load (1.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC[0m
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.8ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" ASC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 1]]
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.0ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "shortened_urls"."id" DESC[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (3.2ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" DESC[0m  [["tag_id", 1]]
+  [1m[36mShortenedUrl Load (3.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 ORDER BY "num_clicks" DESC LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.8ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mShortenedUrl Load (0.7ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "taggings"."url_id" = "shortened_urls"."id" INNER JOIN "tag_topics" ON "tag_topics"."id" = "taggings"."tag_id"[0m
+  [1m[36mShortenedUrl Load (0.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "taggings"."url_id" = "shortened_urls"."id"[0m
+  [1m[36mTaggings Load (0.4ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings"[0m
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics"[0m
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.7ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTaggings Load (1.4ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "taggings"."tag_id" = "tag_topics"."id"[0m
+  [1m[36mTagTopic Load (0.6ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "taggings"."tag_id" = "tag_topics"."id"[0m
+  [1m[36mTagTopic Load (0.7ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "taggings"."tag_id" = "tag_topics"."id" INNER JOIN "taggings" "taggings_tag_topics_join" ON "taggings_tag_topics_join"."tag_id" = "tag_topics"."id" INNER JOIN "shortened_urls" ON "shortened_urls"."id" = "taggings_tag_topics_join"."url_id"[0m
+  [1m[36mTagTopic Load (2.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "taggings"."tag_id" = "tag_topics"."id" INNER JOIN "taggings" "taggings_tag_topics_join" ON "taggings_tag_topics_join"."tag_id" = "tag_topics"."id" INNER JOIN "shortened_urls" ON "shortened_urls"."id" = "taggings_tag_topics_join"."url_id" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mShortenedUrl Load (0.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "taggings"."url_id" = "shortened_urls"."id"[0m
+  [1m[36mShortenedUrl Load (0.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "taggings"."url_id" = "shortened_urls"."id"[0m
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.5ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.5ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 2]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.6ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 3]]
+  [1m[36mShortenedUrl Load (1.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[36mVisit Load (0.4ms)[0m  [1m[34mSELECT "visits".* FROM "visits"[0m
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" LEFT OUTER JOIN "taggings" ON "taggings"."tag_id" = "tag_topics"."id" LEFT OUTER JOIN "shortened_urls" ON "shortened_urls"."id" = "taggings"."url_id"[0m
+  [1m[36mTagTopic Load (1.5ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" LEFT OUTER JOIN "taggings" ON "taggings"."tag_id" = "tag_topics"."id" LEFT OUTER JOIN "shortened_urls" ON "shortened_urls"."id" = "taggings"."url_id" GROUP BY "tag_topics"."id"[0m
+  [1m[36mTagTopic Load (2.8ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" LEFT OUTER JOIN "taggings" ON "taggings"."tag_id" = "tag_topics"."id" LEFT OUTER JOIN "shortened_urls" ON "shortened_urls"."id" = "taggings"."url_id" GROUP BY "tag_topics"."id" ORDER BY COUNT(urls.num_clicks)[0m
+  [1m[36mTagTopic Load (2.8ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" LEFT OUTER JOIN "taggings" ON "taggings"."tag_id" = "tag_topics"."id" LEFT OUTER JOIN "shortened_urls" ON "shortened_urls"."id" = "taggings"."url_id" GROUP BY "tag_topics"."id" ORDER BY COUNT(urls.num_clicks) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mTagTopic Load (2.6ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" LEFT OUTER JOIN "taggings" ON "taggings"."tag_id" = "tag_topics"."id" LEFT OUTER JOIN "shortened_urls" ON "shortened_urls"."id" = "taggings"."url_id" GROUP BY "tag_topics"."id" ORDER BY COUNT(num_clicks)[0m
+  [1m[36mTagTopic Load (0.8ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" LEFT OUTER JOIN "taggings" ON "taggings"."tag_id" = "tag_topics"."id" LEFT OUTER JOIN "shortened_urls" ON "shortened_urls"."id" = "taggings"."url_id" GROUP BY "tag_topics"."id" ORDER BY COUNT(num_clicks) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.8ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1 LIMIT $2[0m  [["tag_id", 1], ["LIMIT", 11]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[36mTagTopic Load (1.0ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.5ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (1.1ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (1.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.2ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+DEPRECATION WARNING: SourceAnnotationExtractor is deprecated! Use Rails::SourceAnnotationExtractor instead. (called from <main> at /home/revenge/Documents/appAcademy/SQL/Active Record/URLShortener/bin/rails:9)
+DEPRECATION WARNING: SourceAnnotationExtractor is deprecated! Use Rails::SourceAnnotationExtractor instead. (called from <main> at /home/revenge/Documents/appAcademy/SQL/Active Record/URLShortener/bin/rails:9)
+  [1m[36mTagTopic Load (1.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mTagTopic Load (0.3ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.0ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVisit Create (0.7ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["shortened_url_id", 1], ["created_at", "2020-11-23 07:00:04.706557"], ["updated_at", "2020-11-23 07:00:04.706557"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."long_url" = $1[0m  [["long_url", "www.website.com"]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "\"user1@example.org\""], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "F4zR9UsgM918_qYIA0AWQw"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "FwTG322VC_XSDkEdqCAyqg"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mVisit Create (0.7ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["shortened_url_id", 4], ["created_at", "2020-11-23 07:03:33.840718"], ["updated_at", "2020-11-23 07:03:33.840718"]]
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mTagTopic Load (0.5ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics"[0m
+  [1m[36mTagTopic Load (0.9ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.1ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 1]]
+  [1m[36mShortenedUrl Load (0.9ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" ORDER BY "shortened_urls"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTagTopic Load (1.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 6]]
+  [1m[36mShortenedUrl Load (0.3ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" INNER JOIN "taggings" ON "tag_topics"."id" = "taggings"."tag_id" WHERE "taggings"."url_id" = $1[0m  [["url_id", 2]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "F4zR9UsgM918_qYIA0AWQw"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mVisit Create (0.8ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["shortened_url_id", 2], ["created_at", "2020-11-23 07:05:25.606795"], ["updated_at", "2020-11-23 07:05:25.606795"]]
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mTagTopic Load (0.4ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.5ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "F4zR9UsgM918_qYIA0AWQw"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mVisit Create (0.8ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["shortened_url_id", 2], ["created_at", "2020-11-23 07:10:35.800477"], ["updated_at", "2020-11-23 07:10:35.800477"]]
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mTagTopic Load (1.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user2@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (0.7ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "F4zR9UsgM918_qYIA0AWQw"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mVisit Create (0.8ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 2], ["shortened_url_id", 2], ["created_at", "2020-11-23 07:11:48.247839"], ["updated_at", "2020-11-23 07:11:48.247839"]]
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/visit.rb:6:in `record_visit!'
+  [1m[36mTagTopic Load (1.1ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" ORDER BY "tag_topics"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortenedUrl Load (1.2ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" INNER JOIN "taggings" ON "shortened_urls"."id" = "taggings"."url_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 2]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "visits" ON "users"."id" = "visits"."user_id" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 1]]

@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+# puts "#{User.where(email: 'user1@example.org').attributes}"
+
+require 'launchy'
+
+puts "Please enter your email"
+
+user_email = gets.chomp
+user_obj = User.find_by(email: user_email)
+puts "Please select an option:"
+puts "1) Visit a shortened URL"
+puts "2) Shorten a URL"
+
+option = gets.chomp
+
+case option
+when "1"
+  puts "Enter the short URL"
+  short = gets.chomp
+  shortened_url_obj = ShortenedUrl.find_by(short_url: short)
+  Visit.record_visit!(user_obj,shortened_url_obj)
+  puts "launching #{shortened_url_obj.long_url} ..."
+  sleep(3)
+  Launchy.open(shortened_url_obj.long_url)
+when "2"
+  puts "Type in the long URL"
+  long_url = gets.chomp
+  shortened = ShortenedUrl.new.factory(user_obj,long_url)
+  puts "Short URL is #{shortened.short_url}"
+  puts "Thanks for using the URLShortener :)"
+
+end

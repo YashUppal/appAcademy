@@ -7,6 +7,8 @@ class ShortenedUrl < ApplicationRecord
   has_many :visits, class_name: :Visit, primary_key: :id, foreign_key: :shortened_url_id
   has_many :visitors,through: :visits, source: :visitors
   has_many :visitors_distinct, ->{distinct},through: :visits, source: :visitors
+  has_many :taggings, class_name: :Taggings, primary_key: :id, foreign_key: :url_id
+  has_many :tag_topics, through: :taggings, source: :topics
 
   def self.random_code
     code = ""
