@@ -2,6 +2,8 @@ class ShortenedUrl < ApplicationRecord
   validates :user_id, presence: true
   validates :long_url, presence: true
   validates :short_url, presence: true, uniqueness: true
+  validate :no_spamming
+  validate :nonpremium_max
   
   belongs_to :submitter, class_name: :User, primary_key: :id, foreign_key: :user_id
   has_many :visits, class_name: :Visit, primary_key: :id, foreign_key: :shortened_url_id
@@ -37,5 +39,19 @@ class ShortenedUrl < ApplicationRecord
     # self.visits
   end
 
+  def no_spamming
+    creation_count = ShortenedUrl.where({created_at: (1.minute.ago)..(Time.now.utc),user_id: self.user_id}).count
+    if creation_count >= 5
+      errors.add("Please wait for sometime to create more urls")
+    end
+  end
+
+  def nonpremium_max
+    user_submit_count = ShortenedUrl.where(user_id: self.user_id).count
+    if user_submit_count >= 5
+      errors.add("Upgrade to save more than links") unless self.submitter.premium
+    end
+    # return user_submit_count
+  end
 
 end

@@ -7,6 +7,10 @@ puts "Please enter your email"
 
 user_email = gets.chomp
 user_obj = User.find_by(email: user_email)
+if user_obj.nil?
+  puts "User not found :("
+  exit
+end
 puts "Please select an option:"
 puts "1) Visit a shortened URL"
 puts "2) Shorten a URL"
