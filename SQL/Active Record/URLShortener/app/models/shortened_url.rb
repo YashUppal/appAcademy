@@ -21,7 +21,7 @@ class ShortenedUrl < ApplicationRecord
     return code
   end
 
-  def self.prune(n)
+  def self.prune_incorrect(n)
     # ShortenedUrl.where.not(created_at: (15.minutes.ago)..(Time.now.utc))
     # Visit.where.not(created_at: (15.minutes.ago)..(Time.now.utc)).map { |obj| obj.id }
     # return ShortenedUrl.where('id IN(?)', Visit.where.not(created_at: (n.minutes.ago)..(Time.now.utc)).map { |obj| obj.id }).destroy_all
@@ -38,10 +38,34 @@ class ShortenedUrl < ApplicationRecord
 
 
     # ShortenedUrl.where("id IN (?)",(Visit.where.not(created_at: (n.minutes.ago)..(Time.now.utc)).map(&:shortened_url_id) + ShortenedUrl.where.not(id: (ShortenedUrl.joins(:visits)))))
-
     # destroyed = ShortenedUrl.where("id NOT IN (?)",Visit.where.not(created_at: (n.minutes.ago)..(Time.now.utc)).map(&:shortened_url_id)).destroy_all
-    destroyed = ShortenedUrl.where("id NOT IN (?) AND user_id NOT IN (?)",Visit.where.not(created_at: (n.minutes.ago)..(Time.now.utc)).map(&:shortened_url_id), (Visit.where("user_id IN (?)",User.where(premium: true).map(&:id)).map(&:user_id)
-    )).destroy_all
+
+    # destroyed = ShortenedUrl.where("id NOT IN (?) AND user_id NOT IN (?)",Visit.where.not(created_at: (n.minutes.ago)..(Time.now.utc)).map(&:shortened_url_id), (Visit.where("user_id IN (?)",User.where(premium: true).map(&:id)).map(&:user_id)
+    # ))
+    # return destroyed
+    # destroyed.each do |obj|
+    #   tags = obj.taggings
+    #   tags.destroy_all
+
+    #   visits = obj.visits
+    #   visits.destroy_all
+    # end
+  end
+
+  def self.prune(n)
+    # Visit.where.not(created_at: (n.minutes.ago)..(Time.now.utc))
+    # destroyed = ShortenedUrl.joins(:visits).where.not("visits.created_at BETWEEN (?) AND (?)", (n.minutes.ago),(Time.now.utc)).joi
+    # .to_a.concat(ShortenedUrl.where.not(id: (ShortenedUrl.all.joins(:visits).map(&:id))
+    # )).destroy_all
+    
+    premium_ids = ShortenedUrl.where("user_id IN (?)",User.where(premium: true).map(&:id)).map(&:id)
+    # return
+    # return premium_ids
+    # return ShortenedUrl.joins(:visits).where.not("visits.created_at BETWEEN (?) AND (?)", (1.minutes.ago),(Time.now.utc)) + ShortenedUrl.where.not(id: (ShortenedUrl.all.joins(:visits).map(&:id)))
+    # -->destroyed =  ShortenedUrl.where("id IN (?)",ShortenedUrl.joins(:visits).where.not("visits.created_at BETWEEN (?) AND (?)", (1.minutes.ago),(Time.now.utc)) + ShortenedUrl.where.not(id: (ShortenedUrl.all.joins(:visits).map(&:id))))
+    destroyed = ShortenedUrl.joins(:visits).where.not("visits.created_at BETWEEN (?) AND (?)", (1.minutes.ago),(Time.now.utc)) + ShortenedUrl.where.not(id: (ShortenedUrl.all.joins(:visits).map(&:id) + premium_ids)).destroy_all
+   
+
     destroyed.each do |obj|
       tags = obj.taggings
       tags.destroy_all
@@ -51,7 +75,7 @@ class ShortenedUrl < ApplicationRecord
     end
   end
 
-  def self.factory(user,long_url_string)
+  def self.factory(user,long_url_string) 
     ShortenedUrl.create!(user_id: user.id, long_url: long_url_string, short_url: ShortenedUrl.random_code)
   end
 

@@ -2,7 +2,10 @@ class Visit < ApplicationRecord
   validates :user_id, presence: true
   validates :shortened_url_id, presence: true
 
-  def self.record_visit!(user,shortened_url)
+  def self.factory!(user,shortened_url)
+    if Visit.exists?(shortened_url.id)
+      Visit.delete(shortened_url)
+    end
     Visit.create!(user_id: user.id, shortened_url_id: shortened_url.id)
     # short_url = ShortenedUrl.find(shortened_url.id)
     # short_url.updated_at = Visit.last.shortened_url_id
