@@ -29,7 +29,7 @@ when "1"
 when "2"
   puts "Type in the long URL"
   long_url = gets.chomp
-  shortened = ShortenedUrl.new.factory(user_obj,long_url)
+  shortened = ShortenedUrl.factory(user_obj,long_url)
   puts "Short URL is #{shortened.short_url}"
   puts "Thanks for using the URLShortener :)"
 

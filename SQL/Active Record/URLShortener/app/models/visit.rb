@@ -4,6 +4,9 @@ class Visit < ApplicationRecord
 
   def self.record_visit!(user,shortened_url)
     Visit.create!(user_id: user.id, shortened_url_id: shortened_url.id)
+    # short_url = ShortenedUrl.find(shortened_url.id)
+    # short_url.updated_at = Visit.last.shortened_url_id
+    # short_url.save!
   end
 
   has_many :visitors, class_name: :User, primary_key: :user_id, foreign_key: :id

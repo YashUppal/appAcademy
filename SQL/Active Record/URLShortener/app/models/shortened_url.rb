@@ -21,7 +21,37 @@ class ShortenedUrl < ApplicationRecord
     return code
   end
 
-  def factory(user,long_url_string)
+  def self.prune(n)
+    # ShortenedUrl.where.not(created_at: (15.minutes.ago)..(Time.now.utc))
+    # Visit.where.not(created_at: (15.minutes.ago)..(Time.now.utc)).map { |obj| obj.id }
+    # return ShortenedUrl.where('id IN(?)', Visit.where.not(created_at: (n.minutes.ago)..(Time.now.utc)).map { |obj| obj.id }).destroy_all
+    # .not(created_at: (n.minutes.ago)..(Time.now.utc))
+    # ShortenedUrl.all.map(&:visits)
+    # "Visit.created_at BETWEEN (?) AND (?)", (n.minutes.ago),(Time.now.utc)
+    # .where(created_at: ((n).minutes.ago)..(Time.now.utc))
+    # ShortenedUrl.where('id IN(?)',Visit.where(created_at: (n.minutes.ago)..(Time.now.utc)).map(&:shortened_url_id))
+
+    # ShortenedUrl.where("id NOT IN (?)",(Visit.all.map(&:shortened_url_id) + (Visit.joins(:urls).where.not(created_at: (n.minutes.ago)..(Time.now.utc)).map(&:shortened_url_id)))).destroy_all
+
+    # Visit.joins(:urls).where(created_at: (n.minutes.ago)..(Time.now.utc)).map(&:shortened_url_id)
+    # Visit.joins(:urls).where.not(created_at: (n.minutes.ago)..(Time.now.utc)).map(&:shortened_url_id)
+
+
+    # ShortenedUrl.where("id IN (?)",(Visit.where.not(created_at: (n.minutes.ago)..(Time.now.utc)).map(&:shortened_url_id) + ShortenedUrl.where.not(id: (ShortenedUrl.joins(:visits)))))
+
+    # destroyed = ShortenedUrl.where("id NOT IN (?)",Visit.where.not(created_at: (n.minutes.ago)..(Time.now.utc)).map(&:shortened_url_id)).destroy_all
+    destroyed = ShortenedUrl.where("id NOT IN (?) AND user_id NOT IN (?)",Visit.where.not(created_at: (n.minutes.ago)..(Time.now.utc)).map(&:shortened_url_id), (Visit.where("user_id IN (?)",User.where(premium: true).map(&:id)).map(&:user_id)
+    )).destroy_all
+    destroyed.each do |obj|
+      tags = obj.taggings
+      tags.destroy_all
+
+      visits = obj.visits
+      visits.destroy_all
+    end
+  end
+
+  def self.factory(user,long_url_string)
     ShortenedUrl.create!(user_id: user.id, long_url: long_url_string, short_url: ShortenedUrl.random_code)
   end
 
