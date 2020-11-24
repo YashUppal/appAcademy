@@ -9733,3 +9733,89 @@ DEPRECATION WARNING: SourceAnnotationExtractor is deprecated! Use Rails::SourceA
   [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mShortenedUrl Load (1.2ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
   [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "premium") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "user1@example.org"], ["created_at", "2020-11-24 14:57:22.722330"], ["updated_at", "2020-11-24 14:57:22.722330"], ["premium", true]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "VKWRm4LsLQzhALwJUM0CkA"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:19:in `random_code'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/shortened_url.rb:79:in `factory'
+  [1m[36mShortenedUrl Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "VKWRm4LsLQzhALwJUM0CkA"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:79:in `factory'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."created_at" BETWEEN $1 AND $2 AND "shortened_urls"."user_id" = $3[0m  [["created_at", "2020-11-24 14:57:02.595249"], ["created_at", "2020-11-24 14:58:02.595428"], ["user_id", 3]]
+  ↳ app/models/shortened_url.rb:97:in `no_spamming'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/models/shortened_url.rb:104:in `nonpremium_max'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:79:in `factory'
+  [1m[36mShortenedUrl Create (0.5ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("user_id", "long_url", "short_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["long_url", "www.webiste.com"], ["short_url", "VKWRm4LsLQzhALwJUM0CkA"], ["created_at", "2020-11-24 14:58:02.606573"], ["updated_at", "2020-11-24 14:58:02.606573"]]
+  ↳ app/models/shortened_url.rb:79:in `factory'
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/shortened_url.rb:79:in `factory'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "t-yBihXz6NkLLiTXcNPFLA"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:19:in `random_code'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/shortened_url.rb:79:in `factory'
+  [1m[36mShortenedUrl Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "t-yBihXz6NkLLiTXcNPFLA"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:79:in `factory'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."created_at" BETWEEN $1 AND $2 AND "shortened_urls"."user_id" = $3[0m  [["created_at", "2020-11-24 15:01:09.519354"], ["created_at", "2020-11-24 15:02:09.519476"], ["user_id", 3]]
+  ↳ app/models/shortened_url.rb:97:in `no_spamming'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/models/shortened_url.rb:104:in `nonpremium_max'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:79:in `factory'
+  [1m[36mShortenedUrl Create (0.5ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("user_id", "long_url", "short_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["long_url", "www.website.com"], ["short_url", "t-yBihXz6NkLLiTXcNPFLA"], ["created_at", "2020-11-24 15:02:09.529483"], ["updated_at", "2020-11-24 15:02:09.529483"]]
+  ↳ app/models/shortened_url.rb:79:in `factory'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/shortened_url.rb:79:in `factory'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedUrl Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "[\"binoculars\\n\", \"volunteered\\n\", \"prognosticators\\n\"]"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."created_at" BETWEEN $1 AND $2 AND "shortened_urls"."user_id" = $3[0m  [["created_at", "2020-11-24 15:04:12.941429"], ["created_at", "2020-11-24 15:05:12.941537"], ["user_id", 3]]
+  ↳ app/models/shortened_url.rb:97:in `no_spamming'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/models/shortened_url.rb:104:in `nonpremium_max'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Create (0.6ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("user_id", "long_url", "short_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["long_url", "www.website.com"], ["short_url", "[\"binoculars\\n\", \"volunteered\\n\", \"prognosticators\\n\"]"], ["created_at", "2020-11-24 15:05:12.951943"], ["updated_at", "2020-11-24 15:05:12.951943"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedUrl Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "optometrist\n-horticulturists\n"], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."created_at" BETWEEN $1 AND $2 AND "shortened_urls"."user_id" = $3[0m  [["created_at", "2020-11-24 15:04:42.001659"], ["created_at", "2020-11-24 15:05:42.001774"], ["user_id", 3]]
+  ↳ app/models/shortened_url.rb:97:in `no_spamming'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/models/shortened_url.rb:104:in `nonpremium_max'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Create (0.5ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("user_id", "long_url", "short_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["long_url", "www.website.com"], ["short_url", "optometrist\n-horticulturists\n"], ["created_at", "2020-11-24 15:05:42.013688"], ["updated_at", "2020-11-24 15:05:42.013688"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedUrl Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "deodorizes\n-masseuses\n"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."created_at" BETWEEN $1 AND $2 AND "shortened_urls"."user_id" = $3[0m  [["created_at", "2020-11-24 15:05:07.939184"], ["created_at", "2020-11-24 15:06:07.939293"], ["user_id", 3]]
+  ↳ app/models/shortened_url.rb:97:in `no_spamming'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/models/shortened_url.rb:104:in `nonpremium_max'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mShortenedUrl Create (0.5ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("user_id", "long_url", "short_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["long_url", "www.website.com"], ["short_url", "deodorizes\n-masseuses\n"], ["created_at", "2020-11-24 15:06:07.949425"], ["updated_at", "2020-11-24 15:06:07.949425"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@example.org"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedUrl Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "pseudopodium-caraway"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."created_at" BETWEEN $1 AND $2 AND "shortened_urls"."user_id" = $3[0m  [["created_at", "2020-11-24 15:07:11.801231"], ["created_at", "2020-11-24 15:08:11.801324"], ["user_id", 3]]
+  ↳ app/models/shortened_url.rb:97:in `no_spamming'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/models/shortened_url.rb:104:in `nonpremium_max'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:106:in `nonpremium_max'
+  [1m[36mShortenedUrl Create (0.6ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("user_id", "long_url", "short_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["long_url", "www.website.com"], ["short_url", "pseudopodium-caraway"], ["created_at", "2020-11-24 15:08:11.810982"], ["updated_at", "2020-11-24 15:08:11.810982"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m

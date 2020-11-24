@@ -27,9 +27,15 @@ when "1"
   sleep(3)
   Launchy.open(shortened_url_obj.long_url)
 when "2"
+  shortened = ShortenedUrl.new
   puts "Type in the long URL"
   long_url = gets.chomp
-  shortened = ShortenedUrl.factory(user_obj,long_url)
+  if user_obj.premium
+    random_text =  File.open('public/engmix.txt').to_a.sample(2).map(&:chomp).join("-")
+    shortened = ShortenedUrl.create!(user_id: user_obj.id, long_url: long_url, short_url: random_text)
+  else
+    shortened = ShortenedUrl.factory(user_obj,long_url)
+  end
   puts "Short URL is #{shortened.short_url}"
   puts "Thanks for using the URLShortener :)"
 
