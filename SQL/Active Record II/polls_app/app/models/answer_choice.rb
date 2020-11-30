@@ -3,4 +3,10 @@ class AnswerChoice < ApplicationRecord
     has_many :responses, class_name: :Response, primary_key: :id, foreign_key: :answer_choice_id
 
     validates :answer_choice, presence: true
+
+    after_destroy :log_destroy_action
+
+    def log_destroy_action
+        puts "Answer Choice Destroyed!"
+    end
 end
