@@ -19,14 +19,17 @@ Poll.create!([
 
 questions = Question.create([ 
   {question: "What's the best programming language?", poll_id: 1},
-  {question: "Best horror movie?", poll_id: 2}
+  {question: "Best horror movie?", poll_id: 2},
+  {question: "What's the best text editor?", poll_id: 1}
 ])
 
 answer_choices = AnswerChoice.create([
   {answer_choice: "Ruby",question_id: 1},
   {answer_choice: "Ofcourse Ruby", question_id: 1},
   {answer_choice: "Friday the 13th", question_id: 2},
-  {answer_choice: "Halloween", question_id: 2}
+  {answer_choice: "Halloween", question_id: 2},
+  {answer_choice: "Vim", question_id: 3},
+  {answer_choice: "Emacs", question_id: 3},
 ])
 
 responses = Response.create([
@@ -35,4 +38,12 @@ responses = Response.create([
   {user_id: 2, question_id: 1, answer_choice_id: 2},
   {user_id: 3, question_id: 2, answer_choice_id: 4},
   {user_id: 3, question_id: 1, answer_choice_id: 1},
+  {user_id: 3, question_id: 3, answer_choice_id: 5},
+  {user_id: 1, question_id: 3, answer_choice_id: 5},
+
+  # User.completed_polls testing data
+  # {user_id: 3, question_id: 1, answer_choice_id: 1},
+  # {user_id: 3, question_id: 2, answer_choice_id: 3},
+  # {user_id: 3, question_id: 3, answer_choice_id: 5}
+
 ])
