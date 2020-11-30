@@ -10,6 +10,12 @@ class Response < ApplicationRecord
     validate :respondent_already_answered?
     validate :author_cant_respond_to_own_polls
 
+    after_destroy :log_destroy_action
+
+    def log_destroy_action
+        puts "Response Destroyed!"
+    end
+
     def sibling_responses
         self.question.responses.where.not(id: self.id)
     end
