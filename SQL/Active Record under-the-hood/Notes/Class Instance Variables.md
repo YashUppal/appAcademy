@@ -102,3 +102,16 @@ Corgi.all
 ## Global Variables
 
 * Global Variables are defined as ```$variable_name``` and they are have global scope. They're accessible in any class/method. Generally, It is advisable to avoid using global variables as they don't have any real utility and don't usually fit well into object oriented paradigm.
+
+```ruby
+# Example of Global Variables
+# $stdin and $stdout
+
+# can be used to detect if a used is running the code in a console or logging output to a file.
+
+if $stdout.isatty
+    puts 'I am on a console!'
+else
+    puts 'I am on a file!'
+end
+```
